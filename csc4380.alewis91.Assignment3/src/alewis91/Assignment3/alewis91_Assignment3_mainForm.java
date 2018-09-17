@@ -47,6 +47,7 @@ public class alewis91_Assignment3_mainForm extends javax.swing.JFrame {
         lblKey = new javax.swing.JLabel();
         lblEnc = new javax.swing.JLabel();
         lblDec = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         MnuFile = new javax.swing.JMenu();
         MnuEdit = new javax.swing.JMenu();
@@ -109,6 +110,13 @@ public class alewis91_Assignment3_mainForm extends javax.swing.JFrame {
 
         lblDec.setText("Decrypted Text");
 
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
         MnuFile.setText("File");
         menuBar.add(MnuFile);
 
@@ -163,23 +171,24 @@ public class alewis91_Assignment3_mainForm extends javax.swing.JFrame {
                         .addGap(124, 124, 124)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(345, 345, 345)
-                        .addComponent(txtKeyInput, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(368, 368, 368)
                         .addComponent(lblKey))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(lblDec)
                         .addGap(257, 257, 257)
-                        .addComponent(lblEnc)))
+                        .addComponent(lblEnc))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(btnEncrypt)
+                        .addGap(285, 285, 285)
+                        .addComponent(btnDecrypt))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnClear)
+                            .addComponent(txtKeyInput, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(112, 112, 112))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(btnEncrypt)
-                .addGap(285, 285, 285)
-                .addComponent(btnDecrypt)
-                .addGap(176, 176, 176))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +213,9 @@ public class alewis91_Assignment3_mainForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEncrypt)
                             .addComponent(btnDecrypt))
-                        .addGap(138, 138, 138))))
+                        .addGap(32, 32, 32)
+                        .addComponent(btnClear)
+                        .addGap(74, 74, 74))))
         );
 
         pack();
@@ -329,6 +340,14 @@ public class alewis91_Assignment3_mainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEncryptActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        txtDecrypted.setText("");
+        txtEncrypted.setText("");
+        key = 0;
+        txtKeyInput.setText("0");
+    }//GEN-LAST:event_btnClearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,6 +388,7 @@ public class alewis91_Assignment3_mainForm extends javax.swing.JFrame {
     private javax.swing.JMenu MnuEdit;
     private javax.swing.JMenu MnuExit;
     private javax.swing.JMenu MnuFile;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDecrypt;
     private javax.swing.JButton btnEncrypt;
     private javax.swing.JScrollPane jScrollPane1;
