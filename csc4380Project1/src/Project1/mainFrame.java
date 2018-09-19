@@ -6,6 +6,9 @@
 package Project1;
 
 import java.awt.CardLayout;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -19,7 +22,7 @@ public class mainFrame extends javax.swing.JFrame {
      */
     JPanel cards;
     CardLayout cardLayout;
-    public mainFrame() {
+    public mainFrame() throws FileNotFoundException {
         initComponents();
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
@@ -101,7 +104,11 @@ public class mainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainFrame().setVisible(true);
+                try {
+                    new mainFrame().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
