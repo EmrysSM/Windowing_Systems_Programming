@@ -5,6 +5,9 @@
  */
 package Project1;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author aaron
@@ -14,8 +17,33 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
+    JPanel cards;
+    CardLayout cardLayout;
     public mainFrame() {
         initComponents();
+        this.setLayout(new CardLayout());
+        mainMenu mainScreen = new mainMenu();
+        Store store = new Store();
+        GamePanel game = new GamePanel();
+        gameOver results = new gameOver();
+        HighScores highScores = new HighScores();
+        cards = new JPanel(new CardLayout());
+
+        cards.add(mainScreen, "main screen");
+        cards.add(store, "store");
+        cards.add(game, "game");
+        cards.add(results, "results");
+        cards.add(highScores, "highscores");
+        
+        getContentPane().add(cards); 
+        
+        cardLayout = (CardLayout) cards.getLayout();
+        cardLayout.show(cards, "main screen");
+    }
+    
+    public void changeContext(String panel)
+    {
+        cardLayout.show(cards, panel);
     }
 
     /**
@@ -33,11 +61,11 @@ public class mainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
         pack();
