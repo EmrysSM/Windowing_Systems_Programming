@@ -21,102 +21,102 @@ public class Store extends javax.swing.JPanel {
     public Store() {
         initComponents();
          String localDir = System.getProperty("user.dir");
-        ImageIcon icon = new ImageIcon(localDir + "\\src\\resources\\red_car.png");
-        JButton button = new JButton(icon);
+        ImageIcon redCar = new ImageIcon(localDir + "\\src\\resources\\red_car.png");
+        JButton btnRedCar = new JButton(redCar);
         
-        button.setSize(55,60);
-        button.setLocation(60, 100);
+        btnRedCar.setSize(55,60);
+        btnRedCar.setLocation(60, 100);
         //button.setEditable(false);
-        this.add(button);
+        this.add(btnRedCar);
         
         
-//        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button1 = new JButton(icon);
+        ImageIcon blueCar = new ImageIcon(localDir + "\\src\\resources\\blue_car.png");
+        JButton btnBlueCar = new JButton(blueCar);
         
-        button1.setSize(55,60);
-        button1.setLocation(190, 100);
+        btnBlueCar.setSize(55,60);
+        btnBlueCar.setLocation(190, 100);
         //button.setEditable(false);
-        this.add(button1);
+        this.add(btnBlueCar);
         
         
         
-//        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button2 = new JButton(icon);
+        ImageIcon greenCar = new ImageIcon(localDir + "\\src\\resources\\green_car.png");
+        JButton btnGreenCar = new JButton(greenCar);
         
-        button2.setSize(55,60);
-        button2.setLocation(320, 100);
+        btnGreenCar.setSize(55,60);
+        btnGreenCar.setLocation(320, 100);
         //button.setEditable(false);
-        this.add(button2);
+        this.add(btnGreenCar);
         
         
         
-//        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button3 = new JButton(icon);
+        ImageIcon purpleCar = new ImageIcon(localDir + "\\src\\resources\\purple_car.png");
+        JButton btnPurpleCar = new JButton(purpleCar);
         
-        button3.setSize(55,60);
-        button3.setLocation(450, 100);
+        btnPurpleCar.setSize(55,60);
+        btnPurpleCar.setLocation(450, 100);
         //button.setEditable(false);
-        this.add(button3);
+        this.add(btnPurpleCar);
         
         
         
-//        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button4 = new JButton(icon);
+        ImageIcon yellowCar = new ImageIcon(localDir + "\\src\\resources\\yellow_car.png");
+        JButton btnYellowCar = new JButton(yellowCar);
         
-        button4.setSize(55,60);
-        button4.setLocation(580, 100);
+        btnYellowCar.setSize(55,60);
+        btnYellowCar.setLocation(580, 100);
         //button.setEditable(false);
-        this.add(button4);
+        this.add(btnYellowCar);
         
         
         
-        //        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button5 = new JButton(icon);
+        ImageIcon redTruck = new ImageIcon(localDir + "\\src\\resources\\red_truck.png");
+        JButton btnRedTruck = new JButton(redTruck);
         
-        button5.setSize(55,60);
-        button5.setLocation(60, 220);
+        btnRedTruck.setSize(55,60);
+        btnRedTruck.setLocation(60, 220);
         //button.setEditable(false);
-        this.add(button5);
+        this.add(btnRedTruck);
         
         
         
-        //        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button6 = new JButton(icon);
+        ImageIcon blueTruck = new ImageIcon(localDir + "\\src\\resources\\blue_truck.png");
+        JButton btnBlueTruck = new JButton(blueTruck);
         
-        button6.setSize(55,60);
-        button6.setLocation(190, 220);
+        btnBlueTruck.setSize(55,60);
+        btnBlueTruck.setLocation(190, 220);
         //button.setEditable(false);
-        this.add(button6);
+        this.add(btnBlueTruck);
         
         
         
-        //        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button7 = new JButton(icon);
+        ImageIcon greenTruck = new ImageIcon(localDir + "\\src\\resources\\green_truck.png");
+        JButton btnGreenTruck = new JButton(greenTruck);
         
-        button7.setSize(55,60);
-        button7.setLocation(320, 220);
+        btnGreenTruck.setSize(55,60);
+        btnGreenTruck.setLocation(320, 220);
         //button.setEditable(false);
-        this.add(button7);
+        this.add(btnGreenTruck);
         
         
         
-        //        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button8 = new JButton(icon);
+        ImageIcon purpleTruck = new ImageIcon(localDir + "\\src\\resources\\purple_truck.png");
+        JButton btnPurpleTruck = new JButton(purpleTruck);
         
-        button8.setSize(55,60);
-        button8.setLocation(450, 220);
+        btnPurpleTruck.setSize(55,60);
+        btnPurpleTruck.setLocation(450, 220);
         //button.setEditable(false);
-        this.add(button8);
+        this.add(btnPurpleTruck);
         
         
         
-        //        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
-        JButton button9 = new JButton(icon);
+        ImageIcon yellowTruck = new ImageIcon(localDir + "\\src\\resources\\yellow_truck.png");
+        JButton btnYellowTruck = new JButton(yellowTruck);
         
-        button9.setSize(55,60);
-        button9.setLocation(580, 220);
+        btnYellowTruck.setSize(55,60);
+        btnYellowTruck.setLocation(580, 220);
         //button.setEditable(false);
-        this.add(button9);
+        this.add(btnYellowTruck);
     }
 
     /**
