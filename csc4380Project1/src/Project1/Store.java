@@ -368,38 +368,99 @@ public class Store extends javax.swing.JPanel {
     } 
     
     private void btnRedTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        if(carsOwned[4])
+        {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.setCurrentVehicle(redTruck);
         lblCurrVehicleVar.setText("Red Truck");
+        return;
+        }
+        if(money >= 6000)
+        {
+            money -= 6000;
+            carsOwned[4] = true;
+            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+            topFrame.setCurrentVehicle(redTruck);
+            lblCurrVehicleVar.setText("Red Truck");
+            lblMoneyAmt.setText("$"+money);
+        }
     } 
     
     private void btnBlueTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        if(carsOwned[5])
+        {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.setCurrentVehicle(blueTruck);
         lblCurrVehicleVar.setText("Blue Truck");
+        return;
+        }
+        if(money >= 7000)
+        {
+            money -= 7000;
+            carsOwned[5] = true;
+            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+            topFrame.setCurrentVehicle(blueTruck);
+            lblCurrVehicleVar.setText("Blue Truck");
+            lblMoneyAmt.setText("$"+money);
+        }
     } 
     
     private void btnGreenTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        if(carsOwned[6])
+        {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.setCurrentVehicle(greenTruck);
         lblCurrVehicleVar.setText("Green Truck");
+        return;
+        }
+        if(money >= 8000)
+        {
+            money -= 8000;
+            carsOwned[6] = true;
+            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+            topFrame.setCurrentVehicle(greenTruck);
+            lblCurrVehicleVar.setText("Green Truck");
+            lblMoneyAmt.setText("$"+money);
+        }
+        
     } 
     
     private void btnPurpleTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        if(carsOwned[7])
+        {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.setCurrentVehicle(purpleTruck);
         lblCurrVehicleVar.setText("Purple Truck");
+        return;
+        }
+        if(money >= 9000)
+        {
+            money -= 9000;
+            carsOwned[7] = true;
+            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+            topFrame.setCurrentVehicle(purpleTruck);
+            lblCurrVehicleVar.setText("Purple Truck");
+            lblMoneyAmt.setText("$"+money);
+        }
     } 
     
     private void btnYellowTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+        if(carsOwned[8])
+        {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.setCurrentVehicle(yellowTruck);
         lblCurrVehicleVar.setText("Yellow Truck");
+        return;
+        }
+        if(money >= 10000)
+        {
+            money -= 10000;
+            carsOwned[8] = true;
+            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+            topFrame.setCurrentVehicle(yellowTruck);
+            lblCurrVehicleVar.setText("Yellow Truck");
+            lblMoneyAmt.setText("$"+money);
+        }
     } 
     
     
