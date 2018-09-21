@@ -234,6 +234,7 @@ public class Store extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnBackActionPerformed
 
     

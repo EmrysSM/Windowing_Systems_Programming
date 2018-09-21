@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import static javafx.scene.paint.Color.color;
 import static javafx.scene.paint.Color.color;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -23,10 +24,19 @@ public class GamePanel extends javax.swing.JPanel {
      * Creates new form GamePanel
      */
     Image img;
+    int currentScore;
     public GamePanel() {
         initComponents();
         img = Toolkit.getDefaultToolkit().createImage("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\Game screen.png");
         this.setBackground(Color.black);
+    }
+    
+    
+    
+    public void gameOver(){
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        topFrame.setLastScore(currentScore);
+        topFrame.changeContext("results");
     }
     
 //    @Override

@@ -6,6 +6,8 @@
 package Project1;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,8 +26,13 @@ public class mainFrame extends javax.swing.JFrame {
     ImageIcon currentVehicle;
     JPanel cards;
     CardLayout cardLayout;
+    int lastScore;
     public mainFrame() throws FileNotFoundException {
         initComponents();
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((screen.getWidth() - getWidth()) /2);
+        int y = (int) ((screen.getHeight() -getHeight()) /2);
+        setLocation(x, y); 
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
         Store store = new Store();
@@ -117,6 +124,10 @@ public class mainFrame extends javax.swing.JFrame {
     public void setCurrentVehicle(ImageIcon i)
     {
         currentVehicle = i;
+    }
+
+    void setLastScore(int c) {
+       lastScore = c;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
