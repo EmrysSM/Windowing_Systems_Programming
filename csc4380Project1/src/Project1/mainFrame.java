@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +21,7 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
+    ImageIcon currentVehicle;
     JPanel cards;
     CardLayout cardLayout;
     public mainFrame() throws FileNotFoundException {
@@ -111,6 +113,10 @@ public class mainFrame extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    public void setCurrentVehicle(ImageIcon i)
+    {
+        currentVehicle = i;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -15,14 +15,18 @@ import javax.swing.SwingUtilities;
  */
 public class Store extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Store
-     */
+    ImageIcon redCar, blueCar, greenCar, purpleCar, yellowCar, redTruck, blueTruck,
+            greenTruck, purpleTruck, yellowTruck;
+    JButton btnRedCar, btnBlueCar, btnGreenCar, btnPurpleCar, btnYellowCar, btnRedTruck,
+            btnBlueTruck, btnGreenTruck, btnPurpleTruck, btnYellowTruck;
+    
+    
+    
     public Store() {
         initComponents();
          String localDir = System.getProperty("user.dir");
-        ImageIcon redCar = new ImageIcon(localDir + "\\src\\resources\\red_car.png");
-        JButton btnRedCar = new JButton(redCar);
+        redCar = new ImageIcon(localDir + "\\src\\resources\\red_car.png");
+        btnRedCar = new JButton(redCar);
         
         btnRedCar.setSize(55,60);
         btnRedCar.setLocation(60, 100);
@@ -30,8 +34,8 @@ public class Store extends javax.swing.JPanel {
         this.add(btnRedCar);
         
         
-        ImageIcon blueCar = new ImageIcon(localDir + "\\src\\resources\\blue_car.png");
-        JButton btnBlueCar = new JButton(blueCar);
+        blueCar = new ImageIcon(localDir + "\\src\\resources\\blue_car.png");
+        btnBlueCar = new JButton(blueCar);
         
         btnBlueCar.setSize(55,60);
         btnBlueCar.setLocation(190, 100);
@@ -40,8 +44,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon greenCar = new ImageIcon(localDir + "\\src\\resources\\green_car.png");
-        JButton btnGreenCar = new JButton(greenCar);
+        greenCar = new ImageIcon(localDir + "\\src\\resources\\green_car.png");
+        btnGreenCar = new JButton(greenCar);
         
         btnGreenCar.setSize(55,60);
         btnGreenCar.setLocation(320, 100);
@@ -50,8 +54,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon purpleCar = new ImageIcon(localDir + "\\src\\resources\\purple_car.png");
-        JButton btnPurpleCar = new JButton(purpleCar);
+        purpleCar = new ImageIcon(localDir + "\\src\\resources\\purple_car.png");
+        btnPurpleCar = new JButton(purpleCar);
         
         btnPurpleCar.setSize(55,60);
         btnPurpleCar.setLocation(450, 100);
@@ -60,8 +64,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon yellowCar = new ImageIcon(localDir + "\\src\\resources\\yellow_car.png");
-        JButton btnYellowCar = new JButton(yellowCar);
+        yellowCar = new ImageIcon(localDir + "\\src\\resources\\yellow_car.png");
+        btnYellowCar = new JButton(yellowCar);
         
         btnYellowCar.setSize(55,60);
         btnYellowCar.setLocation(580, 100);
@@ -70,8 +74,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon redTruck = new ImageIcon(localDir + "\\src\\resources\\red_truck.png");
-        JButton btnRedTruck = new JButton(redTruck);
+        redTruck = new ImageIcon(localDir + "\\src\\resources\\red_truck.png");
+        btnRedTruck = new JButton(redTruck);
         
         btnRedTruck.setSize(55,60);
         btnRedTruck.setLocation(60, 220);
@@ -80,8 +84,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon blueTruck = new ImageIcon(localDir + "\\src\\resources\\blue_truck.png");
-        JButton btnBlueTruck = new JButton(blueTruck);
+        blueTruck = new ImageIcon(localDir + "\\src\\resources\\blue_truck.png");
+        btnBlueTruck = new JButton(blueTruck);
         
         btnBlueTruck.setSize(55,60);
         btnBlueTruck.setLocation(190, 220);
@@ -90,8 +94,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon greenTruck = new ImageIcon(localDir + "\\src\\resources\\green_truck.png");
-        JButton btnGreenTruck = new JButton(greenTruck);
+        greenTruck = new ImageIcon(localDir + "\\src\\resources\\green_truck.png");
+        btnGreenTruck = new JButton(greenTruck);
         
         btnGreenTruck.setSize(55,60);
         btnGreenTruck.setLocation(320, 220);
@@ -100,8 +104,8 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon purpleTruck = new ImageIcon(localDir + "\\src\\resources\\purple_truck.png");
-        JButton btnPurpleTruck = new JButton(purpleTruck);
+        purpleTruck = new ImageIcon(localDir + "\\src\\resources\\purple_truck.png");
+        btnPurpleTruck = new JButton(purpleTruck);
         
         btnPurpleTruck.setSize(55,60);
         btnPurpleTruck.setLocation(450, 220);
@@ -110,13 +114,19 @@ public class Store extends javax.swing.JPanel {
         
         
         
-        ImageIcon yellowTruck = new ImageIcon(localDir + "\\src\\resources\\yellow_truck.png");
-        JButton btnYellowTruck = new JButton(yellowTruck);
+        yellowTruck = new ImageIcon(localDir + "\\src\\resources\\yellow_truck.png");
+        btnYellowTruck = new JButton(yellowTruck);
         
         btnYellowTruck.setSize(55,60);
         btnYellowTruck.setLocation(580, 220);
         //button.setEditable(false);
         this.add(btnYellowTruck);
+        
+        
+        
+        
+        
+        initCustomComponents();
     }
 
     /**
@@ -224,9 +234,61 @@ public class Store extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    
+    private void btnRedCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        System.out.println("Hello");
+    }   
+    
+    private void btnBlueCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnGreenCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnPurpleCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnYellowCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnRedTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnBlueTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnGreenTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnPurpleTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    private void btnYellowTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    } 
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -241,4 +303,81 @@ public class Store extends javax.swing.JPanel {
     private javax.swing.JLabel lblRedCar;
     private javax.swing.JLabel lblRedTruck;
     // End of variables declaration//GEN-END:variables
+
+    private void initCustomComponents() {
+        btnRedCar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedCarActionPerformed(evt);
+            }
+        });
+        
+        btnBlueCar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBlueCarActionPerformed(evt);
+            }
+        });
+        
+        
+        btnGreenCar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGreenCarActionPerformed(evt);
+            }
+        });
+        
+        
+        btnPurpleCar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPurpleCarActionPerformed(evt);
+            }
+        });
+        
+        btnYellowCar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYellowCarActionPerformed(evt);
+            }
+        });
+        
+        btnRedTruck.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedTruckActionPerformed(evt);
+            }
+        });
+        
+        btnBlueTruck.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBlueTruckActionPerformed(evt);
+            }
+        });
+        
+        
+        btnGreenTruck.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGreenTruckActionPerformed(evt);
+            }
+        });
+        
+        
+        btnPurpleTruck.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPurpleTruckActionPerformed(evt);
+            }
+        });
+        
+        
+        btnYellowTruck.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYellowTruckActionPerformed(evt);
+            }
+        });
+    }
 }
