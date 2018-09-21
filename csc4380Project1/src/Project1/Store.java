@@ -20,7 +20,8 @@ public class Store extends javax.swing.JPanel {
      */
     public Store() {
         initComponents();
-        ImageIcon icon = new ImageIcon("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\red_car.png");
+         String localDir = System.getProperty("user.dir");
+        ImageIcon icon = new ImageIcon(localDir + "\\src\\resources\\red_car.png");
         JButton button = new JButton(icon);
         
         button.setSize(55,60);

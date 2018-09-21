@@ -38,7 +38,8 @@ public class HighScores extends javax.swing.JPanel {
     
     public void setScores() throws FileNotFoundException
     {
-        File inputFile = new File("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\project1\\scores.csv");
+        String localDir = System.getProperty("user.dir");
+        File inputFile = new File(localDir + "\\src\\resources\\scores.csv");
         Scanner scan = new Scanner(inputFile);
         //System.out.println(scan.next());
         for(int i = 0; i < NUM_SCORES; i++)
