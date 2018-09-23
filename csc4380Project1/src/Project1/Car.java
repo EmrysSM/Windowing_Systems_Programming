@@ -8,6 +8,7 @@ package Project1;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.Random;
 
 /**
  *
@@ -46,37 +47,45 @@ public class Car extends JLabel implements ActionListener {
 
         int nextX = getLocation().x + (deltaX * directionX);
 
-        if (nextX < 0)
-        {
-            nextX = 0;
-            directionX *= -1;
-        }
-
-        if ( nextX + getSize().width > parent.getSize().width)
-        {
-            nextX = parent.getSize().width - getSize().width;
-            directionX *= -1;
-        }
+//        if (nextX < 0)
+//        {
+//            nextX = 0;
+//            directionX *= -1;
+//            parent.remove(this);
+//            parent.repaint();
+//        }
+//
+//        if ( nextX + getSize().width > parent.getSize().width)
+//        {
+//            nextX = parent.getSize().width - getSize().width;
+//            directionX *= -1;
+//            parent.remove(this);
+//            parent.repaint();
+//        }
 
         //  Determine next Y position
 
         int nextY = getLocation().y + (deltaY * directionY);
 
-        if (nextY < 0)
-        {
-            nextY = 0;
-            directionY *= -1;
-        }
+//        if (nextY < 0)
+//        {
+//            nextY = 0;
+//            directionY *= -1;
+//            parent.remove(this);
+//            parent.repaint();
+//        }
 
         if ( nextY + getSize().height > parent.getSize().height)
         {
-            nextY = parent.getSize().height - getSize().height;
-            directionY *= -1;
+//            nextY = parent.getSize().height - getSize().height;
+//            directionY *= -1;
+            parent.remove(this);
+            parent.repaint();
+            return;
         }
 
         //  Move the label
-
-        setLocation(nextX, nextY);
+            setLocation(nextX, nextY);
     }
 
     public static void main(String[] args)
@@ -87,14 +96,26 @@ public class Car extends JLabel implements ActionListener {
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.getContentPane().setLayout(null);
-//      frame.getContentPane().add( new TimerAnimation(10, 10, 2, 3, 1, 1, 10) );
-        frame.getContentPane().add(new Car(300, 100, 3, 2, -1, 1, 20) );
-//      frame.getContentPane().add( new TimerAnimation(0, 000, 5, 0, 1, 1, 20) );
-        frame.getContentPane().add(new Car(0, 200, 5, 0, 1, 1, 80) );
-        frame.setSize(400, 400);
+        frame.setSize(700, 400);
         frame.setLocationRelativeTo( null );
         frame.setVisible(true);
-//      frame.getContentPane().add( new TimerAnimation(10, 10, 2, 3, 1, 1, 10) );
-//      frame.getContentPane().add( new TimerAnimation(10, 10, 3, 0, 1, 1, 10) );
+        generateObstacles(panel);
+    
+    
+    }
+    
+    public static void generateObstacles(JPanel panel) {
+        Random rand = new Random();
+        
+        while(true) {
+            int num = rand.nextInt(7);
+            int xLoc = num * 100 + 50;
+            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
+            try {
+                Thread.sleep(1000);
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+        }
     }
 }
