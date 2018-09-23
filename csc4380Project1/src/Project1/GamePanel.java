@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 import javax.swing.*;
 import static javafx.scene.paint.Color.color;
 import static javafx.scene.paint.Color.color;
@@ -37,6 +38,21 @@ public class GamePanel extends javax.swing.JPanel {
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         img = Toolkit.getDefaultToolkit().createImage("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\Game screen.png");
         this.setBackground(Color.black);
+    }
+    
+    public static void generateObstacles(JPanel panel) {
+        Random rand = new Random();
+        
+        while(true) {
+            int num = rand.nextInt(7);
+            int xLoc = num * 100 + 50;
+            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
+            try {
+                Thread.sleep(1000);
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+        }
     }
     
     public void gameOver(){
