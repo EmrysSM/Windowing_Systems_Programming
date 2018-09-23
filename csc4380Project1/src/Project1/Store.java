@@ -20,6 +20,7 @@ public class Store extends javax.swing.JPanel {
     JButton btnRedCar, btnBlueCar, btnGreenCar, btnPurpleCar, btnYellowCar, btnRedTruck,
             btnBlueTruck, btnGreenTruck, btnPurpleTruck, btnYellowTruck;
     
+    mainFrame parentFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
     
     Boolean[] carsOwned;
     int money;
@@ -29,6 +30,7 @@ public class Store extends javax.swing.JPanel {
     public Store() {
         initComponents();
         
+        //TODO later on make sure that we are changing the money value in the parent frame
         money = 2000;
         
         //TODO fill in the carsOwned array with boolean values to say which cars are owned.

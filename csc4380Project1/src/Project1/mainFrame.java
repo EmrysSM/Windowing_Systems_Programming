@@ -28,15 +28,22 @@ public class mainFrame extends javax.swing.JFrame {
     CardLayout cardLayout;
     int lastScore;
     int frameCount;
+    int money;
+    int currentPanel = 0;
     
     public mainFrame() throws FileNotFoundException {
         initComponents();
+        //next two lines need to be changed
+        money = 2000;
+        lastScore = 1000;
+        
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((screen.getWidth() - getWidth()) /2);
         int y = (int) ((screen.getHeight() -getHeight()) /2);
         setLocation(x, y); 
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
+        //currentPanel = 0;
         Store store = new Store();
 
         //Game panel and timing variables for it
@@ -137,6 +144,22 @@ public class mainFrame extends javax.swing.JFrame {
 
     void setLastScore(int c) {
        lastScore = c;
+    }
+    int getLastScore()
+    {
+        return lastScore;
+    }
+    int getMoney()
+    {
+        return money;
+    }
+    void setMoney(int m)
+    {
+        money = m;
+    }
+    int getCurrentPanel()
+    {
+        return currentPanel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,12 +5,17 @@
  */
 package Project1;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author aaron
  */
 public class gameOver extends javax.swing.JPanel {
 
+    
+    mainFrame topFrame;
+    
     /**
      * Creates new form gameOver
      */
@@ -18,6 +23,12 @@ public class gameOver extends javax.swing.JPanel {
         initComponents();
     }
 
+    
+    
+    public int earnedAmount()
+    {
+        return 0;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +38,81 @@ public class gameOver extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnPlayAgain = new javax.swing.JButton();
+        btnMainMenu = new javax.swing.JButton();
+        lblTotalMoney = new javax.swing.JLabel();
+        lblMonEarned = new javax.swing.JLabel();
+        lblScore = new javax.swing.JLabel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        btnPlayAgain.setText("Play again");
+        btnPlayAgain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayAgainActionPerformed(evt);
+            }
+        });
+
+        btnMainMenu.setText("Main Menu");
+
+        lblTotalMoney.setText("Total Money: $");
+
+        lblMonEarned.setText("Money Earned: $");
+
+        lblScore.setText("Score: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(310, 310, 310)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblScore)
+                    .addComponent(btnMainMenu)
+                    .addComponent(btnPlayAgain)
+                    .addComponent(lblTotalMoney)
+                    .addComponent(lblMonEarned))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(129, Short.MAX_VALUE)
+                .addComponent(lblScore)
+                .addGap(18, 18, 18)
+                .addComponent(lblMonEarned)
+                .addGap(18, 18, 18)
+                .addComponent(lblTotalMoney)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPlayAgain)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMainMenu)
+                .addGap(99, 99, 99))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
+        topFrame.changeContext("game");
+    }//GEN-LAST:event_btnPlayAgainActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        lblScore.setText(lblScore.getText() + topFrame.getLastScore());
+        lblMonEarned.setText(lblMonEarned.getText() + earnedAmount());
+        lblTotalMoney.setText(lblTotalMoney.getText() + topFrame.getMoney());
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMainMenu;
+    private javax.swing.JButton btnPlayAgain;
+    private javax.swing.JLabel lblMonEarned;
+    private javax.swing.JLabel lblScore;
+    private javax.swing.JLabel lblTotalMoney;
     // End of variables declaration//GEN-END:variables
 }

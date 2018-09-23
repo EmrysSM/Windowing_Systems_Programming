@@ -35,7 +35,7 @@ public class GamePanel extends javax.swing.JPanel {
     public GamePanel() {
         initComponents();
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        img = Toolkit.getDefaultToolkit().createImage("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\Game screen.png");
+        //img = Toolkit.getDefaultToolkit().createImage("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\Game screen.png");
         this.setBackground(Color.black);
     }
     
