@@ -10,6 +10,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import static javafx.scene.paint.Color.color;
 import static javafx.scene.paint.Color.color;
 import javax.swing.SwingUtilities;
@@ -25,16 +28,18 @@ public class GamePanel extends javax.swing.JPanel {
      */
     Image img;
     int currentScore;
+    mainFrame topFrame;
+    Car pCar;
+    
+
     public GamePanel() {
         initComponents();
+        topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         img = Toolkit.getDefaultToolkit().createImage("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\Game screen.png");
         this.setBackground(Color.black);
     }
     
-    
-    
     public void gameOver(){
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         topFrame.setLastScore(currentScore);
         topFrame.changeContext("results");
     }

@@ -27,6 +27,8 @@ public class mainFrame extends javax.swing.JFrame {
     JPanel cards;
     CardLayout cardLayout;
     int lastScore;
+    int frameCount;
+    
     public mainFrame() throws FileNotFoundException {
         initComponents();
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -36,7 +38,14 @@ public class mainFrame extends javax.swing.JFrame {
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
         Store store = new Store();
+
+        //Game panel and timing variables for it
         GamePanel game = new GamePanel();
+        boolean running = false;
+        boolean paused = false;
+        int fps = 60;
+        frameCount = 0;
+
         gameOver results = new gameOver();
         HighScores highScores = new HighScores();
         cards = new JPanel(new CardLayout());
