@@ -49,7 +49,7 @@ public class GamePanel extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int num = rand.nextInt(7);
-                int xLoc = num * 100 + 50;
+                int xLoc = num * 100+ 20;
                 panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10, "red_car"));
     //            try {
     //                Thread.sleep(1000);
