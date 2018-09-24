@@ -559,4 +559,14 @@ public class Store extends javax.swing.JPanel {
             }
         });
     }
+    
+    
+    public boolean getCarsOwned(int index)
+    {
+        return carsOwned[index];
+    }
+    public void setCarsOwned(int index, boolean val)
+    {
+        
+    }
 }
