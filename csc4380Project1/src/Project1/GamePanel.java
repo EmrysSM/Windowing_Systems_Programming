@@ -84,16 +84,9 @@ public class GamePanel extends javax.swing.JPanel {
     public boolean collisions() {
         Component[] comps = this.getComponents();
         boolean hit = false;
-                int carCount = 0;
                 for (Component comp : comps) {
-                    if (comp instanceof Car) {
-                        carComps[carCount] = comp;
-                        carCount++;
-                    }
-                }
-                for (Component carComp : carComps) {
-                    if ((carComp.getLocation().y + carComp.getSize().height) >= userCar.getLocation().y &&
-                            carComp.getLocation().x == userCar.getLocation().x) {
+                    if ((comp.getLocation().y + comp.getSize().height) >= userCar.getLocation().y &&
+                            comp.getLocation().x == userCar.getLocation().x && !userCar.equals(comp)) {
                         hit = true;
                         break;
                     }
@@ -106,6 +99,11 @@ public class GamePanel extends javax.swing.JPanel {
         topFrame.setLastScore(currentScore);
         clip.close();
         topFrame.changeContext("results");
+        Component[] comps = this.getComponents();
+        for(Component comp : comps)
+        {
+            this.remove(comp);
+        }
     }
     
     @Override
@@ -165,6 +163,7 @@ public class GamePanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (collisions()) {
                     gameOver();
+                    return;
                 }
             }
         });
