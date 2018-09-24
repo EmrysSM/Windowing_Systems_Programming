@@ -66,15 +66,16 @@ public class GamePanel extends javax.swing.JPanel {
         Component[] comps = this.getComponents();
         Component[] carComps = new Component[comps.length];
         int carCount = 0;
-        for (int i = 0; i < comps.length; i++) {
-            if (comps[i] instanceof Car) {
-                carComps[carCount] = comps[i];
+        for (Component comp : comps) {
+            if (comp instanceof Car) {
+                carComps[carCount] = comp;
                 carCount++;
             }
         }
-        for (int i = 0; i < carComps.length; i++) {
-            for (int j = 0; j < carComps.length; j++) {
-                if (carComps[i].getLocation().x < carComps[j].getLocation().x ) {
+        for (Component carComp : carComps) {
+            for (Component carComp1 : carComps) {
+                if (carComp.getLocation().x < carComp1.getLocation().x &&
+                        carComp.getLocation().y < carComp1.getLocation().y) {
                     
                 }
             }
