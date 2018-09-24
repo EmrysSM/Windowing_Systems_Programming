@@ -20,20 +20,23 @@ public class Car extends JLabel implements ActionListener {
     int directionX = 1;
     int directionY = 1;
     Image img;
+    String color;
     
     public Car(
         int startX, int startY,
         int deltaX, int deltaY,
         int directionX, int directionY,
-        int delay)
+        int delay, String color)
     {
         this.deltaX = deltaX;
         this.deltaY = deltaY;
         this.directionX = directionX;
         this.directionY = directionY;
+        this.color = color;
         
-
-        setIcon( new ImageIcon("C:\\Users\\escottmurrell\\IdeaProjects\\Windowing_Systems_Programming\\csc4380Project1\\src\\resources\\red_car.png") );
+        String localDir = System.getProperty("user.dir");
+        img = Toolkit.getDefaultToolkit().createImage(localDir + "\\src\\resources\\" + color + ".png");
+        setIcon( new ImageIcon(img) );
         setSize( getPreferredSize() );
         setLocation(startX, startY);
         new javax.swing.Timer(delay, this).start();
@@ -99,23 +102,23 @@ public class Car extends JLabel implements ActionListener {
         frame.setSize(700, 400);
         frame.setLocationRelativeTo( null );
         frame.setVisible(true);
-        generateObstacles(panel);
+//        generateObstacles(panel);
     
     
     }
     
-    public static void generateObstacles(JPanel panel) {
-        Random rand = new Random();
-        
-        while(true) {
-            int num = rand.nextInt(7);
-            int xLoc = num * 100 + 50;
-            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
-            try {
-                Thread.sleep(1000);
-            } catch(Exception e) {
-                System.out.println(e);
-            }
-        }
-    }
+//    public static void generateObstacles(JPanel panel) {
+//        Random rand = new Random();
+//        
+//        while(true) {
+//            int num = rand.nextInt(7);
+//            int xLoc = num * 100 + 50;
+//            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
+//            try {
+//                Thread.sleep(1000);
+//            } catch(Exception e) {
+//                System.out.println(e);
+//            }
+//        }
+//    }
 }
