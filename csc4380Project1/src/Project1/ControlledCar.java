@@ -27,13 +27,17 @@ public class ControlledCar extends Car implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int nextX = getLocation().x;
+        Container parent = getParent();
         if (e.getKeyCode() == 39) {
           nextX += (deltaX * 1);
         } else if (e.getKeyCode()== 37) {
           nextX += (deltaX * -1);
         }
-      
-      setLocation(nextX, getLocation().y);
+        if (nextX < 0 || nextX + getSize().width > parent.getSize().width) {
+            setLocation(getLocation().x, getLocation().y);
+        } else {
+            setLocation(nextX, getLocation().y);
+        }
     }
     
     @Override

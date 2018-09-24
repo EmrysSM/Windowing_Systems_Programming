@@ -62,6 +62,25 @@ public class GamePanel extends javax.swing.JPanel {
         time.start();
     }
     
+    public void collisions() {
+        Component[] comps = this.getComponents();
+        Component[] carComps = new Component[comps.length];
+        int carCount = 0;
+        for (int i = 0; i < comps.length; i++) {
+            if (comps[i] instanceof Car) {
+                carComps[carCount] = comps[i];
+                carCount++;
+            }
+        }
+        for (int i = 0; i < carComps.length; i++) {
+            for (int j = 0; j < carComps.length; j++) {
+                if (carComps[i].getLocation().x < carComps[j].getLocation().x ) {
+                    
+                }
+            }
+        }
+    }
+    
     public void gameOver(){
         topFrame.setLastScore(currentScore);
         topFrame.changeContext("results");
