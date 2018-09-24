@@ -41,6 +41,7 @@ public class mainFrame extends javax.swing.JFrame {
     
     public mainFrame() throws FileNotFoundException {
         initComponents();
+        setTitle("Road Rage: Opposing Traffic");
         //next two lines need to be changed
         money = 2001;
         String localDir = System.getProperty("user.dir");
