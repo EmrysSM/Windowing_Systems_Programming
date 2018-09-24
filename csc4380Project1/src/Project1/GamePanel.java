@@ -90,6 +90,7 @@ public class GamePanel extends javax.swing.JPanel {
                     if ((comp.getLocation().y + comp.getSize().height) >= userCar.getLocation().y &&
                             comp.getLocation().x == userCar.getLocation().x && !userCar.equals(comp)) {
                         hit = true;
+                        break;
                     }
                 }
             
