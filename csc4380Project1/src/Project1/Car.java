@@ -8,10 +8,6 @@ package Project1;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -55,38 +51,13 @@ public class Car extends JLabel implements ActionListener {
 
         int nextX = getLocation().x + (deltaX * directionX);
 
-//        if (nextX < 0)
-//        {
-//            nextX = 0;
-//            directionX *= -1;
-//            parent.remove(this);
-//            parent.repaint();
-//        }
-//
-//        if ( nextX + getSize().width > parent.getSize().width)
-//        {
-//            nextX = parent.getSize().width - getSize().width;
-//            directionX *= -1;
-//            parent.remove(this);
-//            parent.repaint();
-//        }
-
-        //  Determine next Y position
 
         int nextY = getLocation().y + (deltaY * directionY);
 
-//        if (nextY < 0)
-//        {
-//            nextY = 0;
-//            directionY *= -1;
-//            parent.remove(this);
-//            parent.repaint();
-//        }
 
         if ( nextY + getSize().height > parent.getSize().height)
         {
-//            nextY = parent.getSize().height - getSize().height;
-//            directionY *= -1;
+
             parent.remove(this);
             parent.repaint();
             finished = true;
@@ -109,23 +80,5 @@ public class Car extends JLabel implements ActionListener {
         frame.setSize(700, 400);
         frame.setLocationRelativeTo( null );
         frame.setVisible(true);
-//        generateObstacles(panel);
-    
-    
     }
-    
-//    public static void generateObstacles(JPanel panel) {
-//        Random rand = new Random();
-//        
-//        while(true) {
-//            int num = rand.nextInt(7);
-//            int xLoc = num * 100 + 50;
-//            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
-//            try {
-//                Thread.sleep(1000);
-//            } catch(Exception e) {
-//                System.out.println(e);
-//            }
-//        }
-//    }
 }

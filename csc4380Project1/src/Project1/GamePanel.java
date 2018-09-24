@@ -83,7 +83,6 @@ public class GamePanel extends javax.swing.JPanel {
     
     public boolean collisions() {
         Component[] comps = this.getComponents();
-        Component[] carComps = new Component[comps.length];
         boolean hit = false;
                 int carCount = 0;
                 for (Component comp : comps) {
@@ -162,7 +161,6 @@ public class GamePanel extends javax.swing.JPanel {
         this.add(userCar);
         userCar.requestFocusInWindow();
         Timer collTime = new Timer(10, new ActionListener() {
-            
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (collisions()) {

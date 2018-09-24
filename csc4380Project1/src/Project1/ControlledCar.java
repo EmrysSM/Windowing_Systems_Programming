@@ -7,7 +7,6 @@ package Project1;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 
 /**
  *
@@ -49,53 +48,4 @@ public class ControlledCar extends Car implements KeyListener {
     public void keyTyped(KeyEvent e) {
         
     }
-    
-//    @Override
-//    public void actionPerformed(ActionEvent e) {}
-//        Container parent = getParent();
-//
-//        //  Determine next X position
-//
-//        int nextX = getLocation().x + (deltaX * directionX);
-//
-////        if (nextX < 0)
-////        {
-////            nextX = 0;
-////            directionX *= -1;
-////            parent.remove(this);
-////            parent.repaint();
-////        }
-////
-////        if ( nextX + getSize().width > parent.getSize().width)
-////        {
-////            nextX = parent.getSize().width - getSize().width;
-////            directionX *= -1;
-////            parent.remove(this);
-////            parent.repaint();
-////        }
-//
-//        //  Determine next Y position
-//
-//        int nextY = getLocation().y + (deltaY * directionY);
-//
-////        if (nextY < 0)
-////        {
-////            nextY = 0;
-////            directionY *= -1;
-////            parent.remove(this);
-////            parent.repaint();
-////        }
-//
-//        if ( nextY + getSize().height > parent.getSize().height)
-//        {
-////            nextY = parent.getSize().height - getSize().height;
-////            directionY *= -1;
-//            parent.remove(this);
-//            parent.repaint();
-//            return;
-//        }
-//
-//        //  Move the label
-//        setLocation(nextX, nextY);
-//    }
 }
