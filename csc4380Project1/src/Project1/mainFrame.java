@@ -117,12 +117,12 @@ public class mainFrame extends javax.swing.JFrame {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
             writer.write(money + "");
-            writer.close();
             writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
             for(int i = 0; i< 9; i++)
             {
-                writer.write(store.getCarsOwned(i) + "\n");
+                writer.write(store.getCarsOwned(i) + " ");
             }
+            writer.close();
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
