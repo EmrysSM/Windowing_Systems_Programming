@@ -7,42 +7,22 @@ package Project1;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
-import java.util.Random;
 
 /**
  *
  * @author escottmurrell
  */
-public class ControlledCar extends JLabel implements ActionListener {
-    int deltaX = 2;
-    int deltaY = 3;
-    int directionX = 1;
-    int directionY = 1;
-    Image img;
-    String color;
+public class ControlledCar extends Car implements ActionListener {
     
     public ControlledCar(
         int startX, int startY,
         int deltaX, int deltaY,
         int directionX, int directionY,
-        int delay, String color)
-    {
-        this.deltaX = deltaX;
-        this.deltaY = deltaY;
-        this.directionX = directionX;
-        this.directionY = directionY;
-        this.color = color;
-        
-        String localDir = System.getProperty("user.dir");
-        img = Toolkit.getDefaultToolkit().createImage(localDir + "\\src\\resources\\" + color + ".png");
-        setIcon( new ImageIcon(img) );
-        setSize( getPreferredSize() );
-        setLocation(startX, startY);
-        new javax.swing.Timer(delay, this).start();
+        int delay, String color) {
+        super(startX,startY, deltaX, deltaY, directionX, directionY, delay, color);
     }
     
-    
+    @Override
     public void actionPerformed(ActionEvent e) {
         Container parent = getParent();
 
@@ -88,37 +68,6 @@ public class ControlledCar extends JLabel implements ActionListener {
         }
 
         //  Move the label
-            setLocation(nextX, nextY);
+        setLocation(nextX, nextY);
     }
-
-    public static void main(String[] args)
-    {
-        JPanel panel = new JPanel();
-        JFrame frame = new JFrame();
-
-        frame.setContentPane(panel);
-        frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        frame.getContentPane().setLayout(null);
-        frame.setSize(700, 400);
-        frame.setLocationRelativeTo( null );
-        frame.setVisible(true);
-//        generateObstacles(panel);
-    
-    
-    }
-    
-//    public static void generateObstacles(JPanel panel) {
-//        Random rand = new Random();
-//        
-//        while(true) {
-//            int num = rand.nextInt(7);
-//            int xLoc = num * 100 + 50;
-//            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
-//            try {
-//                Thread.sleep(1000);
-//            } catch(Exception e) {
-//                System.out.println(e);
-//            }
-//        }
-//    }
 }
