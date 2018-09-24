@@ -42,7 +42,7 @@ public class GamePanel extends javax.swing.JPanel {
     static int currentScore;
     mainFrame topFrame;
     Car pCar;
-    ControlledCar userCar;
+    static ControlledCar userCar;
     AudioInputStream audioInputStream;
     Clip clip;
     
@@ -81,22 +81,25 @@ public class GamePanel extends javax.swing.JPanel {
         time.start();
     }
     
-    public void collisions() {
+    public boolean collisions() {
         Component[] comps = this.getComponents();
         Component[] carComps = new Component[comps.length];
-        int carCount = 0;
-        for (Component comp : comps) {
-            if (comp instanceof Car) {
-                carComps[carCount] = comp;
-                carCount++;
-            }
-        }
-        for (Component carComp : carComps) {
-            if ((carComp.getLocation().y + carComp.getSize().height) >= userCar.getLocation().y &&
-                    carComp.getLocation().x == userCar.getLocation().x) {
-                System.out.println("SMASH");
-            }
-        }
+        boolean hit = false;
+                int carCount = 0;
+                for (Component comp : comps) {
+                    if (comp instanceof Car) {
+                        carComps[carCount] = comp;
+                        carCount++;
+                    }
+                }
+                for (Component carComp : carComps) {
+                    if ((carComp.getLocation().y + carComp.getSize().height) >= userCar.getLocation().y &&
+                            carComp.getLocation().x == userCar.getLocation().x) {
+                        hit = true;
+                    }
+                }
+            
+        return hit;
     }
     
     public void gameOver(){
@@ -157,7 +160,16 @@ public class GamePanel extends javax.swing.JPanel {
         userCar = new ControlledCar(320, 300, 100, 100, 0, 0, 10, topFrame.currentVehicle);
         this.add(userCar);
         userCar.requestFocusInWindow();
-        
+        Timer collTime = new Timer(10, new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (collisions()) {
+                    gameOver();
+                }
+            }
+        });
+        collTime.start();
         String localDir = System.getProperty("user.dir");;
         //The following audio file was pulled off of opengameart.org. All credit for it goes to Zander Noriega
         try { 
