@@ -36,23 +36,29 @@ public class GamePanel extends javax.swing.JPanel {
     public GamePanel() {
         initComponents();
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        //img = Toolkit.getDefaultToolkit().createImage("C:\\Users\\aaron\\OneDrive\\Documents\\Windowing Systems Programming\\Game screen.png");
-        this.setBackground(Color.black);
+        String localDir = System.getProperty("user.dir");
+        img = Toolkit.getDefaultToolkit().createImage(localDir + "\\src\\resources\\streetBackground.png");
+//        this.setBackground(Color.black);
     }
     
     public static void generateObstacles(JPanel panel) {
         Random rand = new Random();
         
-        while(true) {
-            int num = rand.nextInt(7);
-            int xLoc = num * 100 + 50;
-            panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
-            try {
-                Thread.sleep(1000);
-            } catch(Exception e) {
-                System.out.println(e);
+        Timer time = new Timer(1000, new ActionListener() { 
+//        while(true) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int num = rand.nextInt(7);
+                int xLoc = num * 100 + 50;
+                panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
+    //            try {
+    //                Thread.sleep(1000);
+    //            } catch(Exception e) {
+    //                System.out.println(e);
+    //            }
             }
-        }
+        });
+        time.start();
     }
     
     public void gameOver(){
@@ -60,11 +66,11 @@ public class GamePanel extends javax.swing.JPanel {
         topFrame.changeContext("results");
     }
     
-//    @Override
-//    public void paintComponent(Graphics g)
-//{
-//   g.drawImage(img, 0, 0, null);
-//}
+    @Override
+    public void paintComponent(Graphics g)
+    {
+       g.drawImage(img, 0, 0, this);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,6 +80,12 @@ public class GamePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -86,6 +98,11 @@ public class GamePanel extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        generateObstacles(this);
+    }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
