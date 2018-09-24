@@ -296,7 +296,7 @@ public class Store extends javax.swing.JPanel {
     private void btnRedCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(redCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\red_car.png");
         lblCurrVehicleVar.setText("Red Car");
     }   
     
@@ -304,7 +304,7 @@ public class Store extends javax.swing.JPanel {
        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[0])
        {
-        topFrame.setCurrentVehicle(blueCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\blue_car.png");
         lblCurrVehicleVar.setText("Blue Car");
         return;
        }
@@ -312,7 +312,7 @@ public class Store extends javax.swing.JPanel {
        {
            topFrame.setMoney(topFrame.getMoney() - 2000);
            carsOwned[0] = true;
-           topFrame.setCurrentVehicle(blueCar);
+           topFrame.setCurrentVehicle("\\src\\resources\\blue_car.png");
            lblCurrVehicleVar.setText("Blue Car");
            lblMoneyAmt.setText("$"+topFrame.getMoney());
        }
@@ -322,7 +322,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[1])
         {
-        topFrame.setCurrentVehicle(greenCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\green_car.png");
         lblCurrVehicleVar.setText("Green Car");
         return;
         }
@@ -330,7 +330,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney() - 3000);
             carsOwned[1] = true;
-            topFrame.setCurrentVehicle(greenCar);
+            topFrame.setCurrentVehicle("\\src\\resources\\green_car.png");
             lblCurrVehicleVar.setText("Green Car");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -340,7 +340,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[2])
         {
-        topFrame.setCurrentVehicle(purpleCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\purple_car.png");
         lblCurrVehicleVar.setText("Purple Car");
         return;
         }
@@ -348,7 +348,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney() - 4000);
             carsOwned[2] = true;
-            topFrame.setCurrentVehicle(purpleCar);
+            topFrame.setCurrentVehicle("\\src\\resources\\purplr_car.png");
             lblCurrVehicleVar.setText("Purple Car");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -358,7 +358,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[3])
         {
-        topFrame.setCurrentVehicle(yellowCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\yellow_car.png");
         lblCurrVehicleVar.setText("Yellow Car");
         return;
         }
@@ -366,7 +366,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney()-5000);
             carsOwned[3] = true;
-            topFrame.setCurrentVehicle(yellowCar);
+            topFrame.setCurrentVehicle("\\src\\resources\\yellow_car.png");
             lblCurrVehicleVar.setText("Yellow Car"); 
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -376,7 +376,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[4])
         {  
-        topFrame.setCurrentVehicle(redTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\red_truck.png");
         lblCurrVehicleVar.setText("Red Truck");
         return;
         }
@@ -384,7 +384,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney()-6000);
             carsOwned[4] = true;
-            topFrame.setCurrentVehicle(redTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\red_truck.png");
             lblCurrVehicleVar.setText("Red Truck");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -394,7 +394,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[5])
         {
-        topFrame.setCurrentVehicle(blueTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\blue_truck.png");
         lblCurrVehicleVar.setText("Blue Truck");
         return;
         }
@@ -402,7 +402,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney() - 7000);
             carsOwned[5] = true;
-            topFrame.setCurrentVehicle(blueTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\blue_truck.png");
             lblCurrVehicleVar.setText("Blue Truck");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -412,7 +412,7 @@ public class Store extends javax.swing.JPanel {
          mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[6])
         {
-        topFrame.setCurrentVehicle(greenTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\green_truck.png");
         lblCurrVehicleVar.setText("Green Truck");
         return;
         }
@@ -420,7 +420,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney() - 8000);
             carsOwned[6] = true;
-            topFrame.setCurrentVehicle(greenTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\green_truck.png");
             lblCurrVehicleVar.setText("Green Truck");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -431,7 +431,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[7])
         {
-        topFrame.setCurrentVehicle(purpleTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\purple_truck.png");
         lblCurrVehicleVar.setText("Purple Truck");
         return;
         }
@@ -439,7 +439,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney()-9000);
             carsOwned[7] = true;
-            topFrame.setCurrentVehicle(purpleTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\purple_truck.png");
             lblCurrVehicleVar.setText("Purple Truck");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
@@ -449,7 +449,7 @@ public class Store extends javax.swing.JPanel {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[8])
         {
-        topFrame.setCurrentVehicle(yellowTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\yellow_truck");
         lblCurrVehicleVar.setText("Yellow Truck");
         return;
         }
@@ -457,7 +457,7 @@ public class Store extends javax.swing.JPanel {
         {
             topFrame.setMoney(topFrame.getMoney()-10000);
             carsOwned[8] = true;
-            topFrame.setCurrentVehicle(yellowTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\yellow_truck.png");
             lblCurrVehicleVar.setText("Yellow Truck");
             lblMoneyAmt.setText("$"+topFrame.getMoney());
         }

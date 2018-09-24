@@ -28,7 +28,7 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
-    ImageIcon currentVehicle;
+    String currentVehicle;
     JPanel cards;
     CardLayout cardLayout;
     int lastScore;
@@ -162,9 +162,13 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
     }
-    public void setCurrentVehicle(ImageIcon i)
+    public void setCurrentVehicle(String i)
     {
         currentVehicle = i;
+    }
+    public String getCurrentVehicle()
+    {
+        return currentVehicle;
     }
 
     void setLastScore(int c) {
