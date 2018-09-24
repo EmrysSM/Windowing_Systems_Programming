@@ -31,6 +31,7 @@ public class GamePanel extends javax.swing.JPanel {
     static int currentScore;
     mainFrame topFrame;
     Car pCar;
+    ControlledCar userCar;
     
 
     public GamePanel() {
@@ -43,9 +44,10 @@ public class GamePanel extends javax.swing.JPanel {
     }
     
     public static void generateObstacles(JPanel panel) {
+        
         Random rand = new Random();
         
-        Timer time = new Timer(1000, new ActionListener() { 
+        Timer time = new Timer(1000, new ActionListener() {
 //        while(true) {
 //            String localDir = System.getProperty("user.dir");
             @Override
@@ -77,11 +79,9 @@ public class GamePanel extends javax.swing.JPanel {
             }
         }
         for (Component carComp : carComps) {
-            for (Component carComp1 : carComps) {
-                if (carComp.getLocation().x < carComp1.getLocation().x &&
-                        carComp.getLocation().y < carComp1.getLocation().y) {
-                    
-                }
+            if ((carComp.getLocation().y + carComp.getSize().height) >= userCar.getLocation().y &&
+                    carComp.getLocation().x == userCar.getLocation().x) {
+                System.out.println("SMASH");
             }
         }
     }
@@ -140,7 +140,7 @@ public class GamePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         generateObstacles(this);
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        ControlledCar userCar = new ControlledCar(320, 300, 100, 100, 0, 0, 10, topFrame.currentVehicle);
+        userCar = new ControlledCar(320, 300, 100, 100, 0, 0, 10, topFrame.currentVehicle);
         this.add(userCar);
         userCar.requestFocusInWindow();
     }//GEN-LAST:event_formComponentShown
