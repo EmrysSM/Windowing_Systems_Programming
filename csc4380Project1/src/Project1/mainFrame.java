@@ -108,6 +108,7 @@ public class mainFrame extends javax.swing.JFrame {
         //TODO write money amount to a file, write owned vehicles to a file, 
         //write high scores to a file
         
+        
     }//GEN-LAST:event_formWindowClosing
 
     /**
