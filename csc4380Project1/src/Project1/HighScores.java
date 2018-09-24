@@ -132,6 +132,10 @@ public class HighScores extends javax.swing.JPanel {
         topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    public HighScoreObject getHighScore(int i)
+    {
+        return highScores[i];
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -141,4 +145,5 @@ public class HighScores extends javax.swing.JPanel {
     private javax.swing.JLabel lblScore3;
     private javax.swing.JLabel lblScore4;
     // End of variables declaration//GEN-END:variables
+
 }

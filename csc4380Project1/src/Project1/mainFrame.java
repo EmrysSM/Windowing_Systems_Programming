@@ -36,6 +36,7 @@ public class mainFrame extends javax.swing.JFrame {
     int money;
     int currentPanel = 0;
     Store store;
+    HighScores highScores;
     
     public mainFrame() throws FileNotFoundException {
         initComponents();
@@ -60,7 +61,7 @@ public class mainFrame extends javax.swing.JFrame {
         frameCount = 0;
 
         gameOver results = new gameOver();
-        HighScores highScores = new HighScores();
+        highScores = new HighScores();
         cards = new JPanel(new CardLayout());
 
         cards.add(mainScreen, "main screen");
@@ -121,6 +122,12 @@ public class mainFrame extends javax.swing.JFrame {
             for(int i = 0; i< 9; i++)
             {
                 writer.write(store.getCarsOwned(i) + " ");
+            }
+            writer  = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\scores.csv"));
+            for(int i = 0; i < 5; i++)
+            {
+                writer.write(highScores.getHighScore(i).getName() + " " + highScores.getHighScore(i).getScore());
+                writer.newLine();
             }
             writer.close();
         } catch (IOException ex) {
