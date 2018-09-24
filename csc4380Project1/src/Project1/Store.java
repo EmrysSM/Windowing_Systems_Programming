@@ -23,15 +23,12 @@ public class Store extends javax.swing.JPanel {
     mainFrame parentFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
     
     Boolean[] carsOwned;
-    int money;
     
     
     
     public Store() {
         initComponents();
         
-        //TODO later on make sure that we are changing the money value in the parent frame
-        money = 2000;
         
         //TODO fill in the carsOwned array with boolean values to say which cars are owned.
         carsOwned = new Boolean[9];
@@ -39,7 +36,6 @@ public class Store extends javax.swing.JPanel {
         {
             carsOwned[i] = false;
         }
-        lblMoneyAmt.setText("$"+money);
         
          String localDir = System.getProperty("user.dir");
          
@@ -172,6 +168,12 @@ public class Store extends javax.swing.JPanel {
         lblMoney = new javax.swing.JLabel();
         lblMoneyAmt = new javax.swing.JLabel();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,183 +287,179 @@ public class Store extends javax.swing.JPanel {
         topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        lblMoneyAmt.setText("$"+topFrame.getMoney());
+    }//GEN-LAST:event_formComponentShown
+
     
     private void btnRedCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(redCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\red_car.png");
         lblCurrVehicleVar.setText("Red Car");
     }   
     
     private void btnBlueCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-       if(carsOwned[0])
+       mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[0])
        {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(blueCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\blue_car.png");
         lblCurrVehicleVar.setText("Blue Car");
         return;
        }
-       if(money >= 2000)
+       if(topFrame.getMoney() >= 2000)
        {
-           money-= 2000;
+           topFrame.setMoney(topFrame.getMoney() - 2000);
            carsOwned[0] = true;
-           mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-           topFrame.setCurrentVehicle(blueCar);
+           topFrame.setCurrentVehicle("\\src\\resources\\blue_car.png");
            lblCurrVehicleVar.setText("Blue Car");
-           lblMoneyAmt.setText("$"+money);
+           lblMoneyAmt.setText("$"+topFrame.getMoney());
        }
     } 
     
     private void btnGreenCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[1])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(greenCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\green_car.png");
         lblCurrVehicleVar.setText("Green Car");
         return;
         }
-        if(money >= 3000)
+        if(topFrame.getMoney() >= 3000)
         {
-            money -= 3000;
+            topFrame.setMoney(topFrame.getMoney() - 3000);
             carsOwned[1] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(greenCar);
+            topFrame.setCurrentVehicle("\\src\\resources\\green_car.png");
             lblCurrVehicleVar.setText("Green Car");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     
     private void btnPurpleCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[2])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(purpleCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\purple_car.png");
         lblCurrVehicleVar.setText("Purple Car");
         return;
         }
-        if(money >= 4000)
+        if(topFrame.getMoney() >= 4000)
         {
-            money -= 4000;
+            topFrame.setMoney(topFrame.getMoney() - 4000);
             carsOwned[2] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(purpleCar);
+            topFrame.setCurrentVehicle("\\src\\resources\\purplr_car.png");
             lblCurrVehicleVar.setText("Purple Car");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     
     private void btnYellowCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[3])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(yellowCar);
+        topFrame.setCurrentVehicle("\\src\\resources\\yellow_car.png");
         lblCurrVehicleVar.setText("Yellow Car");
         return;
         }
-        if(money >= 5000)
+        if(topFrame.getMoney() >= 5000)
         {
-            money -= 5000;
+            topFrame.setMoney(topFrame.getMoney()-5000);
             carsOwned[3] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(yellowCar);
+            topFrame.setCurrentVehicle("\\src\\resources\\yellow_car.png");
             lblCurrVehicleVar.setText("Yellow Car"); 
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     
     private void btnRedTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        if(carsOwned[4])
-        {
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(redTruck);
+        if(carsOwned[4])
+        {  
+        topFrame.setCurrentVehicle("\\src\\resources\\red_truck.png");
         lblCurrVehicleVar.setText("Red Truck");
         return;
         }
-        if(money >= 6000)
+        if(topFrame.getMoney() >= 6000)
         {
-            money -= 6000;
+            topFrame.setMoney(topFrame.getMoney()-6000);
             carsOwned[4] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(redTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\red_truck.png");
             lblCurrVehicleVar.setText("Red Truck");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     
     private void btnBlueTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[5])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(blueTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\blue_truck.png");
         lblCurrVehicleVar.setText("Blue Truck");
         return;
         }
-        if(money >= 7000)
+        if(topFrame.getMoney()>= 7000)
         {
-            money -= 7000;
+            topFrame.setMoney(topFrame.getMoney() - 7000);
             carsOwned[5] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(blueTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\blue_truck.png");
             lblCurrVehicleVar.setText("Blue Truck");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     
     private void btnGreenTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[6])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(greenTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\green_truck.png");
         lblCurrVehicleVar.setText("Green Truck");
         return;
         }
-        if(money >= 8000)
+        if(topFrame.getMoney() >= 8000)
         {
-            money -= 8000;
+            topFrame.setMoney(topFrame.getMoney() - 8000);
             carsOwned[6] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(greenTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\green_truck.png");
             lblCurrVehicleVar.setText("Green Truck");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
         
     } 
     
     private void btnPurpleTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[7])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(purpleTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\purple_truck.png");
         lblCurrVehicleVar.setText("Purple Truck");
         return;
         }
-        if(money >= 9000)
+        if(topFrame.getMoney() >= 9000)
         {
-            money -= 9000;
+            topFrame.setMoney(topFrame.getMoney()-9000);
             carsOwned[7] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(purpleTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\purple_truck.png");
             lblCurrVehicleVar.setText("Purple Truck");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     
     private void btnYellowTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         if(carsOwned[8])
         {
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.setCurrentVehicle(yellowTruck);
+        topFrame.setCurrentVehicle("\\src\\resources\\yellow_truck");
         lblCurrVehicleVar.setText("Yellow Truck");
         return;
         }
-        if(money >= 10000)
+        if(topFrame.getMoney() >= 10000)
         {
-            money -= 10000;
+            topFrame.setMoney(topFrame.getMoney()-10000);
             carsOwned[8] = true;
-            mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-            topFrame.setCurrentVehicle(yellowTruck);
+            topFrame.setCurrentVehicle("\\src\\resources\\yellow_truck.png");
             lblCurrVehicleVar.setText("Yellow Truck");
-            lblMoneyAmt.setText("$"+money);
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
         }
     } 
     

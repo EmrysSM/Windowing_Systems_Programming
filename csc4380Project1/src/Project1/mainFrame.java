@@ -28,7 +28,7 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
-    ImageIcon currentVehicle;
+    String currentVehicle;
     JPanel cards;
     CardLayout cardLayout;
     int lastScore;
@@ -117,6 +117,7 @@ public class mainFrame extends javax.swing.JFrame {
             BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
             writer.write(money + "");
             writer.close();
+            writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -161,9 +162,13 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
     }
-    public void setCurrentVehicle(ImageIcon i)
+    public void setCurrentVehicle(String i)
     {
         currentVehicle = i;
+    }
+    public String getCurrentVehicle()
+    {
+        return currentVehicle;
     }
 
     void setLastScore(int c) {
