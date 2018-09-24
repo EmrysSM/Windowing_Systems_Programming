@@ -21,18 +21,19 @@ public class ControlledCar extends Car implements KeyListener {
         int directionX, int directionY,
         int delay, String colorDir) {
         super(startX,startY, deltaX, deltaY, directionX, directionY, delay, colorDir);
+        this.addKeyListener(this);
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
-//        int nextX = getLocation().x;
-//        if (KeyEvent.getKeyText(e.getKeyCode()).equals("VK_RIGHT")) {
-//          nextX += (deltaX * 1);
-//        } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("VK_LEFT")) {
-//          nextX += (deltaX * -1);
-//        }
-//      
-//      setLocation(nextX, getLocation().y);
+        int nextX = getLocation().x;
+        if (e.getKeyCode() == 39) {
+          nextX += (deltaX * 1);
+        } else if (e.getKeyCode()== 37) {
+          nextX += (deltaX * -1);
+        }
+      
+      setLocation(nextX, getLocation().y);
     }
     
     @Override

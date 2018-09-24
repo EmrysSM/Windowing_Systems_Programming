@@ -51,7 +51,7 @@ public class GamePanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                 int num = rand.nextInt(7);
                 int xLoc = num * 100+ 20;
-                panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10, "\\src\\resources\\red_car.png"));
+                panel.add(new Car(xLoc, 0, 0, 1, 1, 1, 10, "\\src\\resources\\red_car.png"));
     //            try {
     //                Thread.sleep(1000);
     //            } catch(Exception e) {
@@ -104,8 +104,9 @@ public class GamePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         generateObstacles(this);
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        ControlledCar userCar = new ControlledCar(300, 300, 0, 0, 0, 0, 0, topFrame.currentVehicle);
+        ControlledCar userCar = new ControlledCar(320, 300, 100, 100, 0, 0, 10, topFrame.currentVehicle);
         this.add(userCar);
+        userCar.requestFocusInWindow();
     }//GEN-LAST:event_formComponentShown
 
 
