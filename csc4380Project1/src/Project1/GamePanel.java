@@ -27,7 +27,7 @@ public class GamePanel extends javax.swing.JPanel {
     /**
      * Creates new form GamePanel
      */
-    Image img;
+    static Image img;
     int currentScore;
     mainFrame topFrame;
     Car pCar;
@@ -46,11 +46,12 @@ public class GamePanel extends javax.swing.JPanel {
         
         Timer time = new Timer(1000, new ActionListener() { 
 //        while(true) {
+            String localDir = System.getProperty("user.dir");
             @Override
             public void actionPerformed(ActionEvent e) {
                 int num = rand.nextInt(7);
                 int xLoc = num * 100+ 20;
-                panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10, "red_car"));
+                panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10, new  ImageIcon(img = Toolkit.getDefaultToolkit().createImage(localDir + "\\src\\resources\\red_car.png"))));
     //            try {
     //                Thread.sleep(1000);
     //            } catch(Exception e) {
@@ -102,6 +103,8 @@ public class GamePanel extends javax.swing.JPanel {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         generateObstacles(this);
+//        topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+//        this.add(new ControlledCar(300, 300, 0, 0, 0, 0, 0, topFrame.currentVehicle));
     }//GEN-LAST:event_formComponentShown
 
 
