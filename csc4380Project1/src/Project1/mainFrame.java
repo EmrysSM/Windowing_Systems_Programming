@@ -8,7 +8,12 @@ package Project1;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -34,7 +39,7 @@ public class mainFrame extends javax.swing.JFrame {
     public mainFrame() throws FileNotFoundException {
         initComponents();
         //next two lines need to be changed
-        money = 2000;
+        money = 2001;
         lastScore = 1000;
         
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -107,7 +112,14 @@ public class mainFrame extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         //TODO write money amount to a file, write owned vehicles to a file, 
         //write high scores to a file
-        
+        String localDir = System.getProperty("user.dir");
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
+            writer.write(money + "");
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_formWindowClosing
 
