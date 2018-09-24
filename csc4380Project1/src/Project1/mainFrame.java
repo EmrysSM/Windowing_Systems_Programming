@@ -35,6 +35,7 @@ public class mainFrame extends javax.swing.JFrame {
     int frameCount;
     int money;
     int currentPanel = 0;
+    Store store;
     
     public mainFrame() throws FileNotFoundException {
         initComponents();
@@ -49,7 +50,7 @@ public class mainFrame extends javax.swing.JFrame {
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
         //currentPanel = 0;
-        Store store = new Store();
+        store = new Store();
 
         //Game panel and timing variables for it
         GamePanel game = new GamePanel();
@@ -118,6 +119,10 @@ public class mainFrame extends javax.swing.JFrame {
             writer.write(money + "");
             writer.close();
             writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
+            for(int i = 0; i< 9; i++)
+            {
+                writer.write(store.getCarsOwned(i) + "\n");
+            }
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
