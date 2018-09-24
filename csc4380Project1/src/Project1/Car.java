@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,8 +45,10 @@ public class Car extends JLabel implements ActionListener {
         new javax.swing.Timer(delay, this).start();
     }
     
-    
+    boolean finished = false;
     public void actionPerformed(ActionEvent e) {
+        if(!finished)
+        {
         Container parent = getParent();
 
         //  Determine next X position
@@ -84,11 +89,13 @@ public class Car extends JLabel implements ActionListener {
 //            directionY *= -1;
             parent.remove(this);
             parent.repaint();
+            finished = true;
             return;
         }
 
         //  Move the label
             setLocation(nextX, nextY);
+        }
     }
 
     public static void main(String[] args)
