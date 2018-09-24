@@ -39,7 +39,7 @@ public class mainFrame extends javax.swing.JFrame {
         
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((screen.getWidth() - getWidth()) /2);
-        int y = (int) ((screen.getHeight() -getHeight()) /2);
+        int y = (int) ((screen.getHeight() - getHeight()) /2);
         setLocation(x, y); 
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
