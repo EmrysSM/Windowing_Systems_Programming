@@ -12,16 +12,27 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import static javafx.scene.paint.Color.color;
 import static javafx.scene.paint.Color.color;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author aaron
  */
+
+
 public class GamePanel extends javax.swing.JPanel {
 
     /**
@@ -31,6 +42,8 @@ public class GamePanel extends javax.swing.JPanel {
     static int currentScore;
     mainFrame topFrame;
     Car pCar;
+    AudioInputStream audioInputStream;
+    Clip clip;
     
 
     public GamePanel() {
@@ -88,6 +101,7 @@ public class GamePanel extends javax.swing.JPanel {
     
     public void gameOver(){
         topFrame.setLastScore(currentScore);
+        clip.close();
         topFrame.changeContext("results");
     }
     
@@ -143,6 +157,21 @@ public class GamePanel extends javax.swing.JPanel {
         ControlledCar userCar = new ControlledCar(320, 300, 100, 100, 0, 0, 10, topFrame.currentVehicle);
         this.add(userCar);
         userCar.requestFocusInWindow();
+        
+        String localDir = System.getProperty("user.dir");;
+        //The following audio file was pulled off of opengameart.org. All credit for it goes to Zander Noriega
+        try { 
+            audioInputStream =  AudioSystem.getAudioInputStream(new File(localDir + "\\src\\resources\\Game_bgm.wav"));
+            clip = AudioSystem.getClip(); 
+            clip.open(audioInputStream); 
+            clip.loop(Clip.LOOP_CONTINUOUSLY); 
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formComponentShown
 
 
