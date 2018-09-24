@@ -19,8 +19,8 @@ public class ControlledCar extends Car implements KeyListener {
         int startX, int startY,
         int deltaX, int deltaY,
         int directionX, int directionY,
-        int delay, ImageIcon img) {
-        super(startX,startY, deltaX, deltaY, directionX, directionY, delay, img);
+        int delay, String colorDir) {
+        super(startX,startY, deltaX, deltaY, directionX, directionY, delay, colorDir);
     }
     
     @Override

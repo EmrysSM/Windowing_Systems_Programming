@@ -29,7 +29,7 @@ public class Car extends JLabel implements ActionListener {
         int startX, int startY,
         int deltaX, int deltaY,
         int directionX, int directionY,
-        int delay, ImageIcon img)
+        int delay, String colorDir)
     {
         this.deltaX = deltaX;
         this.deltaY = deltaY;
@@ -37,7 +37,9 @@ public class Car extends JLabel implements ActionListener {
         this.directionY = directionY;
         this.color = color;
         
-        setIcon( img );
+        String localDir = System.getProperty("user.dir");
+        img = Toolkit.getDefaultToolkit().createImage(localDir + colorDir);
+        setIcon( new ImageIcon(img) );
         setSize( getPreferredSize() );
         setLocation(startX, startY);
         new javax.swing.Timer(delay, this).start();
