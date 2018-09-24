@@ -37,6 +37,7 @@ public class mainFrame extends javax.swing.JFrame {
     int currentPanel = 0;
     Store store;
     HighScores highScores;
+    GamePanel game;
     
     public mainFrame() throws FileNotFoundException {
         initComponents();
@@ -78,7 +79,7 @@ public class mainFrame extends javax.swing.JFrame {
         }
 
         //Game panel and timing variables for it
-        GamePanel game = new GamePanel();
+        game = new GamePanel();
         boolean running = false;
         boolean paused = false;
         int fps = 60;
@@ -194,7 +195,8 @@ public class mainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new mainFrame().setVisible(true);
+                    mainFrame mainFrame = new mainFrame();
+                    mainFrame.setVisible(true);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -233,6 +235,13 @@ public class mainFrame extends javax.swing.JFrame {
     HighScores getHighScores()
     {
         return highScores;
+    }
+    
+    void newGame()
+    {
+        cards.remove(game);
+        game = new GamePanel();
+        cards.add(game, "game");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

@@ -58,6 +58,11 @@ public class gameOver extends javax.swing.JPanel {
         });
 
         btnMainMenu.setText("Main Menu");
+        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainMenuActionPerformed(evt);
+            }
+        });
 
         lblTotalMoney.setText("Total Money: $");
 
@@ -97,19 +102,26 @@ public class gameOver extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
+        topFrame.newGame();
+        GamePanel.currentScore = 0;
         topFrame.changeContext("game");
     }//GEN-LAST:event_btnPlayAgainActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        lblScore.setText(lblScore.getText() + topFrame.getLastScore());
-        lblMonEarned.setText(lblMonEarned.getText() + earnedAmount());
-        lblTotalMoney.setText(lblTotalMoney.getText() + topFrame.getMoney());
-        if(topFrame.getHighScores().isHighScore(Integer.parseInt(lblScore.getText())))
+        lblScore.setText("Score: " + topFrame.getLastScore());
+        lblMonEarned.setText("Money Earned: $" + topFrame.getLastScore());
+        lblTotalMoney.setText("Total Money: $" + (topFrame.getMoney()+topFrame.getLastScore()));
+        topFrame.setMoney(topFrame.getMoney() + topFrame.getLastScore());
+        if(topFrame.getHighScores().isHighScore(topFrame.getLastScore()))
         {
              //TODO Create Jdialogue that will get the name and then replace the smallest high score with the current score
         }
     }//GEN-LAST:event_formComponentShown
+
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+       topFrame.changeContext("main screen");
+    }//GEN-LAST:event_btnMainMenuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

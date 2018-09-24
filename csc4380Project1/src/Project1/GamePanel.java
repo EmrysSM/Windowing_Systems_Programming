@@ -60,6 +60,7 @@ public class GamePanel extends javax.swing.JPanel {
     //            }
                 currentScore+= 100;
                 lblScore.setText("Score: " + currentScore);
+                
             }
         });
         time.start();
