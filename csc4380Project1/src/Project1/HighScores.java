@@ -160,8 +160,18 @@ public class HighScores extends javax.swing.JPanel {
         return false;
     }
     
-    void putNewHighScore(String name, int score)
+    void putNewHighScore(String name, String score)
     {
-        
+        int indexOfSmallest = 0;
+        int smallestVal = Integer.parseInt(highScores[0].getScore());
+        for(int i = 0; i < 5; i++)
+        {
+            if(Integer.parseInt(highScores[i].getScore()) < smallestVal)
+            {
+                smallestVal = Integer.parseInt(highScores[i].getScore());
+                indexOfSmallest = i;
+            }
+        }
+        highScores[indexOfSmallest] = new HighScoreObject(name, score);
     }
 }

@@ -15,12 +15,16 @@ public class gameOver extends javax.swing.JPanel {
 
     
     mainFrame topFrame;
+    boolean isHighScore = false;
+    boolean wasShown = false;
     
     /**
      * Creates new form gameOver
      */
     public gameOver() {
         initComponents();
+        lblNewHighScore.setVisible(false);
+        txtName.setVisible(false);
     }
 
     
@@ -43,8 +47,13 @@ public class gameOver extends javax.swing.JPanel {
         lblTotalMoney = new javax.swing.JLabel();
         lblMonEarned = new javax.swing.JLabel();
         lblScore = new javax.swing.JLabel();
+        lblNewHighScore = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
             }
@@ -70,24 +79,41 @@ public class gameOver extends javax.swing.JPanel {
 
         lblScore.setText("Score: ");
 
+        lblNewHighScore.setText("Enter Name:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblScore)
-                    .addComponent(btnMainMenu)
-                    .addComponent(btnPlayAgain)
-                    .addComponent(lblTotalMoney)
-                    .addComponent(lblMonEarned))
+                .addGap(309, 309, 309)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblNewHighScore, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblScore)
+                            .addComponent(btnMainMenu)
+                            .addComponent(btnPlayAgain)
+                            .addComponent(lblTotalMoney)
+                            .addComponent(lblMonEarned)))
+                    .addComponent(txtName))
                 .addContainerGap(297, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(lblNewHighScore, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(lblScore)
                 .addGap(18, 18, 18)
                 .addComponent(lblMonEarned)
@@ -115,20 +141,40 @@ public class gameOver extends javax.swing.JPanel {
         topFrame.setMoney(topFrame.getMoney() + topFrame.getLastScore());
         if(topFrame.getHighScores().isHighScore(topFrame.getLastScore()))
         {
-             //TODO Create Jdialogue that will get the name and then replace the smallest high score with the current score
+             lblNewHighScore.setVisible(true);
+             txtName.setVisible(true);
+             isHighScore = true;
         }
+        wasShown = true;
     }//GEN-LAST:event_formComponentShown
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
        topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        if(wasShown && isHighScore)
+            topFrame.getHighScores().putNewHighScore(txtName.getText(), topFrame.getLastScore()+"");
+        
+        
+        isHighScore = false;
+        lblNewHighScore.setVisible(false);
+        txtName.setText("");
+        txtName.setVisible(false);
+    }//GEN-LAST:event_formComponentHidden
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
     private javax.swing.JButton btnPlayAgain;
     private javax.swing.JLabel lblMonEarned;
+    private javax.swing.JLabel lblNewHighScore;
     private javax.swing.JLabel lblScore;
     private javax.swing.JLabel lblTotalMoney;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

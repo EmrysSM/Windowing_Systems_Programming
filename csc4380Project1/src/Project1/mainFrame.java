@@ -53,7 +53,7 @@ public class mainFrame extends javax.swing.JFrame {
         
         
         //Next line will need to change once we are able to set lastScore on the close of the game panel
-        lastScore = 1000;
+        lastScore = 7000;
         
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((screen.getWidth() - getWidth()) /2);
