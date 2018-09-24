@@ -42,6 +42,15 @@ public class mainFrame extends javax.swing.JFrame {
         initComponents();
         //next two lines need to be changed
         money = 2001;
+        String localDir = System.getProperty("user.dir");
+        File inFile = new File(localDir + "\\src\\resources\\money.txt");
+        Scanner scan = new Scanner(inFile);
+        String moneyString = scan.next();
+        money = Integer.parseInt(moneyString);
+        
+        
+        
+        //Next line will need to change once we are able to set lastScore on the close of the game panel
         lastScore = 1000;
         
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -52,6 +61,21 @@ public class mainFrame extends javax.swing.JFrame {
         mainMenu mainScreen = new mainMenu();
         //currentPanel = 0;
         store = new Store();
+        
+        inFile = new File(localDir + "\\src\\resources\\Owned.txt");
+        scan = new Scanner(inFile);
+        for(int i = 0; i < 9; i++)
+        {
+            switch(scan.next())
+            {
+                case "true":
+                    store.setCarsOwned(i, true);
+                    break;
+                case "false":
+                    store.setCarsOwned(i, false);
+                    break;
+            }
+        }
 
         //Game panel and timing variables for it
         GamePanel game = new GamePanel();
@@ -118,17 +142,20 @@ public class mainFrame extends javax.swing.JFrame {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
             writer.write(money + "");
+            writer.flush();
             writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
             for(int i = 0; i< 9; i++)
             {
                 writer.write(store.getCarsOwned(i) + " ");
             }
+            writer.flush();
             writer  = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\scores.csv"));
             for(int i = 0; i < 5; i++)
             {
                 writer.write(highScores.getHighScore(i).getName() + " " + highScores.getHighScore(i).getScore());
                 writer.newLine();
             }
+            writer.flush();
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
