@@ -87,14 +87,8 @@ public class GamePanel extends javax.swing.JPanel {
         boolean hit = false;
                 int carCount = 0;
                 for (Component comp : comps) {
-                    if (comp instanceof Car) {
-                        carComps[carCount] = comp;
-                        carCount++;
-                    }
-                }
-                for (Component carComp : carComps) {
-                    if ((carComp.getLocation().y + carComp.getSize().height) >= userCar.getLocation().y &&
-                            carComp.getLocation().x == userCar.getLocation().x) {
+                    if ((comp.getLocation().y + comp.getSize().height) >= userCar.getLocation().y &&
+                            comp.getLocation().x == userCar.getLocation().x && !userCar.equals(comp)) {
                         hit = true;
                     }
                 }
