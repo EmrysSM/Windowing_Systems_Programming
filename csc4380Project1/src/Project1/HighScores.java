@@ -31,8 +31,9 @@ public class HighScores extends javax.swing.JPanel {
     static HighScoreObject[] highScores = new HighScoreObject[NUM_SCORES];
     
     
-    public HighScores() {
+    public HighScores() throws FileNotFoundException {
         initComponents();
+        setScores();
     }
     
     public void setScores() throws FileNotFoundException
