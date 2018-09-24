@@ -567,6 +567,6 @@ public class Store extends javax.swing.JPanel {
     }
     public void setCarsOwned(int index, boolean val)
     {
-        
+        carsOwned[index] = val;
     }
 }

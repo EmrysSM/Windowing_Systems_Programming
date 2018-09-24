@@ -28,7 +28,7 @@ public class GamePanel extends javax.swing.JPanel {
      * Creates new form GamePanel
      */
     Image img;
-    int currentScore;
+    static int currentScore;
     mainFrame topFrame;
     Car pCar;
     
@@ -38,6 +38,7 @@ public class GamePanel extends javax.swing.JPanel {
         topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
         String localDir = System.getProperty("user.dir");
         img = Toolkit.getDefaultToolkit().createImage(localDir + "\\src\\resources\\streetBackground.png");
+        currentScore = 0;
 //        this.setBackground(Color.black);
     }
     
@@ -57,6 +58,9 @@ public class GamePanel extends javax.swing.JPanel {
     //            } catch(Exception e) {
     //                System.out.println(e);
     //            }
+                currentScore+= 100;
+                lblScore.setText("Score: " + currentScore);
+                
             }
         });
         time.start();
@@ -102,21 +106,33 @@ public class GamePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblScore = new javax.swing.JLabel();
+
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
             }
         });
 
+        lblScore.setBackground(new java.awt.Color(187, 187, 187));
+        lblScore.setForeground(new java.awt.Color(255, 255, 255));
+        lblScore.setText("Score:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(618, Short.MAX_VALUE)
+                .addComponent(lblScore, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblScore)
+                .addContainerGap(364, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,5 +147,6 @@ public class GamePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JLabel lblScore;
     // End of variables declaration//GEN-END:variables
 }

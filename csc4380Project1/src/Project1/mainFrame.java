@@ -36,12 +36,24 @@ public class mainFrame extends javax.swing.JFrame {
     int money;
     int currentPanel = 0;
     Store store;
+    HighScores highScores;
+    GamePanel game;
     
     public mainFrame() throws FileNotFoundException {
         initComponents();
+        setTitle("Road Rage: Opposing Traffic");
         //next two lines need to be changed
         money = 2001;
-        lastScore = 1000;
+        String localDir = System.getProperty("user.dir");
+        File inFile = new File(localDir + "\\src\\resources\\money.txt");
+        Scanner scan = new Scanner(inFile);
+        String moneyString = scan.next();
+        money = Integer.parseInt(moneyString);
+        
+        
+        
+        //Next line will need to change once we are able to set lastScore on the close of the game panel
+        lastScore = 7000;
         
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((screen.getWidth() - getWidth()) /2);
@@ -51,16 +63,31 @@ public class mainFrame extends javax.swing.JFrame {
         mainMenu mainScreen = new mainMenu();
         //currentPanel = 0;
         store = new Store();
+        
+        inFile = new File(localDir + "\\src\\resources\\Owned.txt");
+        scan = new Scanner(inFile);
+        for(int i = 0; i < 9; i++)
+        {
+            switch(scan.next())
+            {
+                case "true":
+                    store.setCarsOwned(i, true);
+                    break;
+                case "false":
+                    store.setCarsOwned(i, false);
+                    break;
+            }
+        }
 
         //Game panel and timing variables for it
-        GamePanel game = new GamePanel();
+        game = new GamePanel();
         boolean running = false;
         boolean paused = false;
         int fps = 60;
         frameCount = 0;
 
         gameOver results = new gameOver();
-        HighScores highScores = new HighScores();
+        highScores = new HighScores();
         cards = new JPanel(new CardLayout());
 
         cards.add(mainScreen, "main screen");
@@ -117,12 +144,21 @@ public class mainFrame extends javax.swing.JFrame {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
             writer.write(money + "");
-            writer.close();
+            writer.flush();
             writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
             for(int i = 0; i< 9; i++)
             {
-                writer.write(store.getCarsOwned(i) + "\n");
+                writer.write(store.getCarsOwned(i) + " ");
             }
+            writer.flush();
+            writer  = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\scores.csv"));
+            for(int i = 0; i < 5; i++)
+            {
+                writer.write(highScores.getHighScore(i).getName() + " " + highScores.getHighScore(i).getScore());
+                writer.newLine();
+            }
+            writer.flush();
+            writer.close();
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -160,7 +196,8 @@ public class mainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new mainFrame().setVisible(true);
+                    mainFrame mainFrame = new mainFrame();
+                    mainFrame.setVisible(true);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -196,6 +233,17 @@ public class mainFrame extends javax.swing.JFrame {
         return currentPanel;
     }
 
+    HighScores getHighScores()
+    {
+        return highScores;
+    }
+    
+    void newGame()
+    {
+        cards.remove(game);
+        game = new GamePanel();
+        cards.add(game, "game");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

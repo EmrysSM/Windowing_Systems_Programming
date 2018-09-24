@@ -96,7 +96,7 @@ public class mainMenu extends javax.swing.JPanel {
     private void btnMainGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainGameActionPerformed
         // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        topFrame.changeContext("game");
+        topFrame.changeContext("results");
     }//GEN-LAST:event_btnMainGameActionPerformed
 
 
