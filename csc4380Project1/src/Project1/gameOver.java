@@ -105,6 +105,10 @@ public class gameOver extends javax.swing.JPanel {
         lblScore.setText(lblScore.getText() + topFrame.getLastScore());
         lblMonEarned.setText(lblMonEarned.getText() + earnedAmount());
         lblTotalMoney.setText(lblTotalMoney.getText() + topFrame.getMoney());
+        if(topFrame.getHighScores().isHighScore(Integer.parseInt(lblScore.getText())))
+        {
+             //TODO Create Jdialogue that will get the name and then replace the smallest high score with the current score
+        }
     }//GEN-LAST:event_formComponentShown
 
 

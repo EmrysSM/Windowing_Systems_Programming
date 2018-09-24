@@ -146,4 +146,22 @@ public class HighScores extends javax.swing.JPanel {
     private javax.swing.JLabel lblScore4;
     // End of variables declaration//GEN-END:variables
 
+    
+    
+    boolean isHighScore(int score)
+    {
+        for(HighScoreObject h : highScores)
+        {
+            if(Integer.parseInt(h.getScore()) < score)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    void putNewHighScore(String name, int score)
+    {
+        
+    }
 }

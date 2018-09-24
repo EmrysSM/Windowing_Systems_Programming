@@ -230,6 +230,10 @@ public class mainFrame extends javax.swing.JFrame {
         return currentPanel;
     }
 
+    HighScores getHighScores()
+    {
+        return highScores;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
