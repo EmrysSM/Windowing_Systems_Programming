@@ -55,7 +55,11 @@ public class Car extends JLabel implements ActionListener {
         int nextY = getLocation().y + (deltaY * directionY);
 
 
-        if ( nextY + getSize().height > parent.getSize().height)
+        if(this == null)
+        {
+            this.removeAll();
+        }
+        else if ( nextY + getSize().height > parent.getSize().height)
         {
 
             parent.remove(this);

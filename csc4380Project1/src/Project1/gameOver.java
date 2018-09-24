@@ -165,6 +165,7 @@ public class gameOver extends javax.swing.JPanel {
         lblNewHighScore.setVisible(false);
         txtName.setText("");
         txtName.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_formComponentHidden
 
 
