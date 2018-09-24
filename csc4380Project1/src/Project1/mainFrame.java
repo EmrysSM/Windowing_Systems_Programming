@@ -117,6 +117,7 @@ public class mainFrame extends javax.swing.JFrame {
             BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
             writer.write(money + "");
             writer.close();
+            writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
         } catch (IOException ex) {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
