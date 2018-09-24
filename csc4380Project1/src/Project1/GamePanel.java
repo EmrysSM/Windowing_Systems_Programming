@@ -50,7 +50,7 @@ public class GamePanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                 int num = rand.nextInt(7);
                 int xLoc = num * 100 + 50;
-                panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10));
+                panel.add(new Car(xLoc, 0, 0, 1, 0, 1, 10, "red_car"));
     //            try {
     //                Thread.sleep(1000);
     //            } catch(Exception e) {
