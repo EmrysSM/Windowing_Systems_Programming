@@ -28,7 +28,7 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
-    String currentVehicle;
+    String currentVehicle = "\\src\\resources\\red_car.png";
     JPanel cards;
     CardLayout cardLayout;
     int lastScore;
