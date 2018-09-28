@@ -8,7 +8,12 @@ package Project1;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -23,22 +28,66 @@ public class mainFrame extends javax.swing.JFrame {
     /**
      * Creates new form mainFrame
      */
-    ImageIcon currentVehicle;
+    String currentVehicle = "\\src\\resources\\red_car.png";
     JPanel cards;
     CardLayout cardLayout;
     int lastScore;
+    int frameCount;
+    int money;
+    int currentPanel = 0;
+    Store store;
+    HighScores highScores;
+    GamePanel game;
+    
     public mainFrame() throws FileNotFoundException {
         initComponents();
+        setTitle("Road Rage: Opposing Traffic");
+        //next two lines need to be changed
+        money = 2001;
+        String localDir = System.getProperty("user.dir");
+        File inFile = new File(localDir + "\\src\\resources\\money.txt");
+        Scanner scan = new Scanner(inFile);
+        String moneyString = scan.next();
+        money = Integer.parseInt(moneyString);
+        
+        
+        
+        //Next line will need to change once we are able to set lastScore on the close of the game panel
+        lastScore = 7000;
+        
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((screen.getWidth() - getWidth()) /2);
-        int y = (int) ((screen.getHeight() -getHeight()) /2);
+        int y = (int) ((screen.getHeight() - getHeight()) /2);
         setLocation(x, y); 
         this.setLayout(new CardLayout());
         mainMenu mainScreen = new mainMenu();
-        Store store = new Store();
-        GamePanel game = new GamePanel();
+        //currentPanel = 0;
+        store = new Store();
+        
+        inFile = new File(localDir + "\\src\\resources\\Owned.txt");
+        scan = new Scanner(inFile);
+        for(int i = 0; i < 9; i++)
+        {
+            switch(scan.next())
+            {
+                case "true":
+                    store.setCarsOwned(i, true);
+                    break;
+                case "false":
+                    store.setCarsOwned(i, false);
+                    break;
+            }
+        }
+
+        //Game panel and timing variables for it
+        game = new GamePanel();
+        boolean running = false;
+        boolean paused = false;
+        int fps = 60;
+        frameCount = 0;
+
         gameOver results = new gameOver();
-        HighScores highScores = new HighScores();
+        highScores = new HighScores();
         cards = new JPanel(new CardLayout());
 
         cards.add(mainScreen, "main screen");
@@ -67,7 +116,25 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        jMenu3.setText("Exit");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,11 +144,44 @@ public class mainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 377, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        //TODO write money amount to a file, write owned vehicles to a file, 
+        //write high scores to a file
+        String localDir = System.getProperty("user.dir");
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\money.txt"));
+            writer.write(money + "");
+            writer.flush();
+            writer = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\Owned.txt"));
+            for(int i = 0; i< 9; i++)
+            {
+                writer.write(store.getCarsOwned(i) + " ");
+            }
+            writer.flush();
+            writer  = new BufferedWriter(new FileWriter(localDir + "\\src\\resources\\scores.csv"));
+            for(int i = 0; i < 5; i++)
+            {
+                writer.write(highScores.getHighScore(i).getName() + " " + highScores.getHighScore(i).getScore());
+                writer.newLine();
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+
+        System.exit(0);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -114,22 +214,57 @@ public class mainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new mainFrame().setVisible(true);
+                    mainFrame mainFrame = new mainFrame();
+                    mainFrame.setVisible(true);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
-    public void setCurrentVehicle(ImageIcon i)
+    public void setCurrentVehicle(String i)
     {
         currentVehicle = i;
+    }
+    public String getCurrentVehicle()
+    {
+        return currentVehicle;
     }
 
     void setLastScore(int c) {
        lastScore = c;
     }
+    int getLastScore()
+    {
+        return lastScore;
+    }
+    int getMoney()
+    {
+        return money;
+    }
+    void setMoney(int m)
+    {
+        money = m;
+    }
+    int getCurrentPanel()
+    {
+        return currentPanel;
+    }
 
+    HighScores getHighScores()
+    {
+        return highScores;
+    }
+    
+    void newGame()
+    {
+        cards.remove(game);
+        game = new GamePanel();
+        cards.add(game, "game");
+        this.changeContext("game");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

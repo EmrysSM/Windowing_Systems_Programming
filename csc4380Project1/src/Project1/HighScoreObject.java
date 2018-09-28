@@ -22,4 +22,13 @@ public class HighScoreObject {
         return name + ": " + score;
     }
     
+    public String getName()
+    {
+        return name;
+    }
+    public String getScore()
+    {
+        return score;
+    }
+    
 }

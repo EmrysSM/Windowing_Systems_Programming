@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 
 
@@ -31,9 +33,7 @@ public class HighScores extends javax.swing.JPanel {
     
     public HighScores() throws FileNotFoundException {
         initComponents();
-        try{
         setScores();
-        }catch(FileNotFoundException e){throw e;}
     }
     
     public void setScores() throws FileNotFoundException
@@ -70,6 +70,12 @@ public class HighScores extends javax.swing.JPanel {
         lblScore2 = new javax.swing.JLabel();
         lblScore3 = new javax.swing.JLabel();
         lblScore4 = new javax.swing.JLabel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +138,21 @@ public class HighScores extends javax.swing.JPanel {
         topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        try{
+        setScores();
+        }catch(FileNotFoundException e){try {
+            throw e;
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(HighScores.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
+    }//GEN-LAST:event_formComponentShown
+
+    public HighScoreObject getHighScore(int i)
+    {
+        return highScores[i];
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -141,4 +162,33 @@ public class HighScores extends javax.swing.JPanel {
     private javax.swing.JLabel lblScore3;
     private javax.swing.JLabel lblScore4;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    boolean isHighScore(int score)
+    {
+        for(HighScoreObject h : highScores)
+        {
+            if(Integer.parseInt(h.getScore()) < score)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    void putNewHighScore(String name, String score)
+    {
+        int indexOfSmallest = 0;
+        int smallestVal = Integer.parseInt(highScores[0].getScore());
+        for(int i = 0; i < 5; i++)
+        {
+            if(Integer.parseInt(highScores[i].getScore()) < smallestVal)
+            {
+                smallestVal = Integer.parseInt(highScores[i].getScore());
+                indexOfSmallest = i;
+            }
+        }
+        highScores[indexOfSmallest] = new HighScoreObject(name, score);
+    }
 }

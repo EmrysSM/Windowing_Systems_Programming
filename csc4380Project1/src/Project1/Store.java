@@ -20,11 +20,25 @@ public class Store extends javax.swing.JPanel {
     JButton btnRedCar, btnBlueCar, btnGreenCar, btnPurpleCar, btnYellowCar, btnRedTruck,
             btnBlueTruck, btnGreenTruck, btnPurpleTruck, btnYellowTruck;
     
+    mainFrame parentFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+    
+    Boolean[] carsOwned;
+    
     
     
     public Store() {
         initComponents();
+        
+        
+        //TODO fill in the carsOwned array with boolean values to say which cars are owned.
+        carsOwned = new Boolean[9];
+        for(int i = 0; i < carsOwned.length; i++)
+        {
+            carsOwned[i] = false;
+        }
+        
          String localDir = System.getProperty("user.dir");
+         
         redCar = new ImageIcon(localDir + "\\src\\resources\\red_car.png");
         btnRedCar = new JButton(redCar);
         
@@ -149,6 +163,16 @@ public class Store extends javax.swing.JPanel {
         lblGreenTruck = new javax.swing.JLabel();
         lblPurpleTruck = new javax.swing.JLabel();
         lblGoldTruck = new javax.swing.JLabel();
+        lblCurrVehicle = new javax.swing.JLabel();
+        lblCurrVehicleVar = new javax.swing.JLabel();
+        lblMoney = new javax.swing.JLabel();
+        lblMoneyAmt = new javax.swing.JLabel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -177,42 +201,68 @@ public class Store extends javax.swing.JPanel {
 
         lblGoldTruck.setText("$10,000");
 
+        lblCurrVehicle.setText("Current Vehicle:");
+
+        lblCurrVehicleVar.setText("Red Car");
+
+        lblMoney.setText("Money:");
+
+        lblMoneyAmt.setText("$");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCurrVehicle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblRedTruck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblRedCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBlueCar)
+                            .addComponent(lblBlueTruck))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblGreenCar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblGreenTruck, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblRedTruck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblRedCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBlueCar)
-                    .addComponent(lblBlueTruck))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGreenCar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblGreenTruck, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(88, 88, 88)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPurpleCar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblPurpleTruck, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(93, 93, 93)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGoldCar)
-                    .addComponent(lblGoldTruck))
-                .addGap(67, 67, 67))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPurpleCar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPurpleTruck, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblGoldCar)
+                            .addComponent(lblGoldTruck))
+                        .addGap(67, 67, 67))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCurrVehicleVar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblMoney)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMoneyAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(lblCurrVehicle)
+                    .addComponent(lblCurrVehicleVar)
+                    .addComponent(lblMoney)
+                    .addComponent(lblMoneyAmt))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRedCar)
@@ -237,56 +287,180 @@ public class Store extends javax.swing.JPanel {
         topFrame.changeContext("main screen");
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        lblMoneyAmt.setText("$"+topFrame.getMoney());
+    }//GEN-LAST:event_formComponentShown
+
     
     private void btnRedCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
-        System.out.println("Hello");
+        topFrame.setCurrentVehicle("\\src\\resources\\red_car.png");
+        lblCurrVehicleVar.setText("Red Car");
     }   
     
     private void btnBlueCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+       mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[0])
+       {
+        topFrame.setCurrentVehicle("\\src\\resources\\blue_car.png");
+        lblCurrVehicleVar.setText("Blue Car");
+        return;
+       }
+       if(topFrame.getMoney() >= 2000)
+       {
+           topFrame.setMoney(topFrame.getMoney() - 2000);
+           carsOwned[0] = true;
+           topFrame.setCurrentVehicle("\\src\\resources\\blue_car.png");
+           lblCurrVehicleVar.setText("Blue Car");
+           lblMoneyAmt.setText("$"+topFrame.getMoney());
+       }
     } 
     
     private void btnGreenCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[1])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\green_car.png");
+        lblCurrVehicleVar.setText("Green Car");
+        return;
+        }
+        if(topFrame.getMoney() >= 3000)
+        {
+            topFrame.setMoney(topFrame.getMoney() - 3000);
+            carsOwned[1] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\green_car.png");
+            lblCurrVehicleVar.setText("Green Car");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     private void btnPurpleCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[2])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\purple_car.png");
+        lblCurrVehicleVar.setText("Purple Car");
+        return;
+        }
+        if(topFrame.getMoney() >= 4000)
+        {
+            topFrame.setMoney(topFrame.getMoney() - 4000);
+            carsOwned[2] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\purplr_car.png");
+            lblCurrVehicleVar.setText("Purple Car");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     private void btnYellowCarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[3])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\yellow_car.png");
+        lblCurrVehicleVar.setText("Yellow Car");
+        return;
+        }
+        if(topFrame.getMoney() >= 5000)
+        {
+            topFrame.setMoney(topFrame.getMoney()-5000);
+            carsOwned[3] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\yellow_car.png");
+            lblCurrVehicleVar.setText("Yellow Car"); 
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     private void btnRedTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[4])
+        {  
+        topFrame.setCurrentVehicle("\\src\\resources\\red_truck.png");
+        lblCurrVehicleVar.setText("Red Truck");
+        return;
+        }
+        if(topFrame.getMoney() >= 6000)
+        {
+            topFrame.setMoney(topFrame.getMoney()-6000);
+            carsOwned[4] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\red_truck.png");
+            lblCurrVehicleVar.setText("Red Truck");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     private void btnBlueTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[5])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\blue_truck.png");
+        lblCurrVehicleVar.setText("Blue Truck");
+        return;
+        }
+        if(topFrame.getMoney()>= 7000)
+        {
+            topFrame.setMoney(topFrame.getMoney() - 7000);
+            carsOwned[5] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\blue_truck.png");
+            lblCurrVehicleVar.setText("Blue Truck");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     private void btnGreenTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
-        mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[6])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\green_truck.png");
+        lblCurrVehicleVar.setText("Green Truck");
+        return;
+        }
+        if(topFrame.getMoney() >= 8000)
+        {
+            topFrame.setMoney(topFrame.getMoney() - 8000);
+            carsOwned[6] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\green_truck.png");
+            lblCurrVehicleVar.setText("Green Truck");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
+        
     } 
     
     private void btnPurpleTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[7])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\purple_truck.png");
+        lblCurrVehicleVar.setText("Purple Truck");
+        return;
+        }
+        if(topFrame.getMoney() >= 9000)
+        {
+            topFrame.setMoney(topFrame.getMoney()-9000);
+            carsOwned[7] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\purple_truck.png");
+            lblCurrVehicleVar.setText("Purple Truck");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     private void btnYellowTruckActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
         mainFrame topFrame = (mainFrame) SwingUtilities.getWindowAncestor(this);
+        if(carsOwned[8])
+        {
+        topFrame.setCurrentVehicle("\\src\\resources\\yellow_truck");
+        lblCurrVehicleVar.setText("Yellow Truck");
+        return;
+        }
+        if(topFrame.getMoney() >= 10000)
+        {
+            topFrame.setMoney(topFrame.getMoney()-10000);
+            carsOwned[8] = true;
+            topFrame.setCurrentVehicle("\\src\\resources\\yellow_truck.png");
+            lblCurrVehicleVar.setText("Yellow Truck");
+            lblMoneyAmt.setText("$"+topFrame.getMoney());
+        }
     } 
     
     
@@ -295,10 +469,14 @@ public class Store extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel lblBlueCar;
     private javax.swing.JLabel lblBlueTruck;
+    private javax.swing.JLabel lblCurrVehicle;
+    private javax.swing.JLabel lblCurrVehicleVar;
     private javax.swing.JLabel lblGoldCar;
     private javax.swing.JLabel lblGoldTruck;
     private javax.swing.JLabel lblGreenCar;
     private javax.swing.JLabel lblGreenTruck;
+    private javax.swing.JLabel lblMoney;
+    private javax.swing.JLabel lblMoneyAmt;
     private javax.swing.JLabel lblPurpleCar;
     private javax.swing.JLabel lblPurpleTruck;
     private javax.swing.JLabel lblRedCar;
@@ -380,5 +558,15 @@ public class Store extends javax.swing.JPanel {
                 btnYellowTruckActionPerformed(evt);
             }
         });
+    }
+    
+    
+    public boolean getCarsOwned(int index)
+    {
+        return carsOwned[index];
+    }
+    public void setCarsOwned(int index, boolean val)
+    {
+        carsOwned[index] = val;
     }
 }
