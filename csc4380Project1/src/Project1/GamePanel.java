@@ -42,9 +42,10 @@ public class GamePanel extends javax.swing.JPanel {
     static int currentScore;
     mainFrame topFrame;
     Car pCar;
-    static ControlledCar userCar;
+    ControlledCar userCar;
     AudioInputStream audioInputStream;
     Clip clip;
+    static boolean done;
     
 
     public GamePanel() {
@@ -53,6 +54,7 @@ public class GamePanel extends javax.swing.JPanel {
         String localDir = System.getProperty("user.dir");
         img = Toolkit.getDefaultToolkit().createImage(localDir + "\\src\\resources\\streetBackground.png");
         currentScore = 0;
+        done = false;
 //        this.setBackground(Color.black);
     }
     
@@ -63,10 +65,13 @@ public class GamePanel extends javax.swing.JPanel {
         Timer time = new Timer(1000, new ActionListener() {
 //        while(true) {
 //            String localDir = System.getProperty("user.dir");
+            
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (!done) {
                 int num = rand.nextInt(7);
                 int xLoc = num * 100+ 20;
+                System.out.println("Balls");
                 panel.add(new Car(xLoc, 0, 0, 1, 1, 1, 10, "\\src\\resources\\red_car.png"));
     //            try {
     //                Thread.sleep(1000);
@@ -75,10 +80,15 @@ public class GamePanel extends javax.swing.JPanel {
     //            }
                 currentScore+= 100;
                 lblScore.setText("Score: " + currentScore);
-                
+                } else {
+                    return;
+                }
             }
         });
         time.start();
+        if (done) {
+            time.stop();
+        }
     }
     
     public boolean collisions() {
@@ -100,10 +110,13 @@ public class GamePanel extends javax.swing.JPanel {
         clip.close();
         topFrame.changeContext("results");
         Component[] comps = this.getComponents();
-        for(Component comp : comps)
-        {
-            this.remove(comp);
-        }
+        done = true;
+        this.removeAll();
+        comps = this.getComponents();
+//        for(Component comp : comps)
+//        {
+//            this.remove(comp);
+//        }
     }
     
     @Override
